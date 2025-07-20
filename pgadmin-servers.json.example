@@ -1,0 +1,14 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "Django Core Database",
+      "Group": "Servers",
+      "Host": "db",
+      "Port": 5432,
+      "MaintenanceDB": "core_db",
+      "Username": "core_user",
+      "SSLMode": "prefer",
+      "Comment": "Django Core PostgreSQL Database"
+    }
+  }
+}
