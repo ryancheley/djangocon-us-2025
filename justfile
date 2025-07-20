@@ -58,17 +58,23 @@ logs service="web":
     @echo "📋 Showing logs for {{service}}..."
     docker-compose logs -f {{service}}
 
+# Access container console
+[group: 'docker']
+console service="web":
+    @echo "🖥️  Opening console for {{service}}..."
+    docker-compose exec {{service}} /bin/bash
+
 # Run Django migrations
 [group: 'database']
-migrate:
+migrate *ARGS:
     @echo "🗃️  Running migrations..."
-    docker-compose exec web .venv/bin/python manage.py migrate
+    docker-compose exec web .venv/bin/python manage.py migrate {{ARGS}}
 
 # Create Django migrations
 [group: 'database']
-makemigrations app="":
+makemigrations *ARGS:
     @echo "📝 Creating migrations..."
-    docker-compose exec web .venv/bin/python manage.py makemigrations {{app}}
+    docker-compose exec web .venv/bin/python manage.py makemigrations {{ARGS}}
 
 # Create Django superuser
 [group: 'database']
@@ -104,17 +110,22 @@ restore-db file:
     @echo "📥 Restoring database from {{file}}..."
     docker-compose exec -T db psql -U $(DATABASE_USER) $(DATABASE_NAME) < {{file}}
 
+# Run any Django management command
+[group: 'django']
+manage *ARGS:
+    docker-compose exec web .venv/bin/python manage.py {{ARGS}}
+
 # Open Django shell
 [group: 'django']
-shell:
+shell *ARGS:
     @echo "🐍 Opening Django shell..."
-    docker-compose exec web .venv/bin/python manage.py shell_plus
+    docker-compose exec web .venv/bin/python manage.py shell_plus {{ARGS}}
 
 # Collect static files
 [group: 'django']
-collectstatic:
+collectstatic *ARGS="--noinput":
     @echo "📁 Collecting static files..."
-    docker-compose exec web .venv/bin/python manage.py collectstatic --noinput
+    docker-compose exec web .venv/bin/python manage.py collectstatic {{ARGS}}
 
 # Run Django system checks
 [group: 'django']
@@ -128,41 +139,59 @@ generate-secret:
     @echo "🔑 Generating new SECRET_KEY..."
     docker-compose exec web .venv/bin/python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
 
+# Show URL patterns
+[group: 'django']
+show-urls *ARGS:
+    @echo "🔗 Showing URL patterns..."
+    docker-compose exec web .venv/bin/python manage.py show_urls {{ARGS}}
+
+# Create a new Django app
+[group: 'django']
+startapp app:
+    @echo "📱 Creating new Django app: {{app}}..."
+    docker-compose exec web .venv/bin/python manage.py startapp {{app}}
+
+# Clear Django sessions
+[group: 'django']
+clearsessions:
+    @echo "🧹 Clearing expired sessions..."
+    docker-compose exec web .venv/bin/python manage.py clearsessions
+
 # Run all tests
 [group: 'testing']
-test:
+test *ARGS:
     @echo "🧪 Running tests..."
-    docker-compose exec web uv run pytest
+    docker-compose exec web uv run pytest {{ARGS}}
 
 # Run tests with coverage
 [group: 'testing']
-test-cov:
+test-cov *ARGS:
     @echo "📊 Running tests with coverage..."
-    docker-compose exec web uv run pytest --cov=. --cov-report=html --cov-report=term-missing
+    docker-compose exec web uv run pytest --cov=. --cov-report=html --cov-report=term-missing {{ARGS}}
 
 # Run specific test file
 [group: 'testing']
-test-file file:
+test-file file *ARGS:
     @echo "🎯 Running specific test file: {{file}}"
-    docker-compose exec web uv run pytest {{file}}
+    docker-compose exec web uv run pytest {{file}} {{ARGS}}
 
 # Run linting
 [group: 'quality']
-lint:
+lint *ARGS=".":
     @echo "🔍 Running linting..."
-    docker-compose exec web uv run ruff check .
+    docker-compose exec web uv run ruff check {{ARGS}}
 
 # Run linting with auto-fix
 [group: 'quality']
-lint-fix:
+lint-fix *ARGS=".":
     @echo "🔧 Running linting with auto-fix..."
-    docker-compose exec web uv run ruff check --fix .
+    docker-compose exec web uv run ruff check --fix {{ARGS}}
 
 # Format code
 [group: 'quality']
-format:
+format *ARGS=".":
     @echo "🎨 Formatting code..."
-    docker-compose exec web uv run ruff format .
+    docker-compose exec web uv run ruff format {{ARGS}}
 
 # Run type checks
 [group: 'quality']
