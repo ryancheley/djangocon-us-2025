@@ -1,0 +1,76 @@
+{% if page_obj %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Pronouns</th>
+            <th>Date of Birth</th>
+            <th>Created</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for person in page_obj %}
+        <tr>
+            <td>
+                <div>
+                    <strong>{{ person.display_name }}</strong>
+                    {% if person.display_name != person.full_name %}
+                        <br><small style="color: #666;">{{ person.full_name }}</small>
+                    {% endif %}
+                </div>
+            </td>
+            <td>{{ person.display_pronouns|default:"—" }}</td>
+            <td>{{ person.date_of_birth|date:"M j, Y"|default:"—" }}</td>
+            <td>{{ person.created_at|date:"M j, Y" }}</td>
+            <td>
+                <div class="d-flex gap-1">
+                    <a href="{% url 'patient:person_detail' person.pk %}" class="btn btn-outline" style="padding: 0.375rem 0.75rem; font-size: 0.875rem;">View</a>
+                    <a href="{% url 'patient:person_edit' person.pk %}" class="btn btn-secondary" style="padding: 0.375rem 0.75rem; font-size: 0.875rem;">Edit</a>
+                    <button
+                        class="btn btn-danger"
+                        style="padding: 0.375rem 0.75rem; font-size: 0.875rem;"
+                        hx-delete="{% url 'patient:person_delete' person.pk %}"
+                        hx-confirm="Are you sure you want to delete {{ person.display_name }}?"
+                    >
+                        Delete
+                    </button>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% if page_obj.has_other_pages %}
+<div class="pagination">
+    {% if page_obj.has_previous %}
+        <a href="?page=1{% if query %}&q={{ query }}{% endif %}">&laquo; First</a>
+        <a href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">Previous</a>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+            <span class="current">{{ num }}</span>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <a href="?page={{ num }}{% if query %}&q={{ query }}{% endif %}">{{ num }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}">Next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}{% if query %}&q={{ query }}{% endif %}">Last &raquo;</a>
+    {% endif %}
+</div>
+{% endif %}
+
+{% else %}
+<div class="text-center" style="padding: 3rem;">
+    <h3 style="color: #666;">No people found</h3>
+    {% if query %}
+        <p>Try adjusting your search terms or <a href="{% url 'patient:person_list' %}">browse all people</a>.</p>
+    {% else %}
+        <p>Get started by <a href="{% url 'patient:person_create' %}">adding a new person</a>.</p>
+    {% endif %}
+</div>
+{% endif %}

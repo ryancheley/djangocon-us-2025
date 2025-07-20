@@ -1,0 +1,39 @@
+{% extends 'patient/base.html' %}
+
+{% block title %}People - Patient Management{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-between align-center mb-3">
+    <h1>People</h1>
+    <a href="{% url 'patient:person_create' %}" class="btn btn-primary">Add New Person</a>
+</div>
+
+<div class="search-form">
+    <div class="search-input">
+        <input
+            type="text"
+            name="q"
+            value="{{ query }}"
+            placeholder="Search people by name..."
+            class="form-input"
+            hx-get="{% url 'patient:person_list' %}"
+            hx-trigger="input changed delay:300ms, search"
+            hx-target="#person-table"
+            hx-include="[name='q']"
+        >
+    </div>
+</div>
+
+{% if query %}
+    <p class="mb-2">
+        <strong>{{ total_count }}</strong> result{{ total_count|pluralize }} for "{{ query }}"
+        <a href="{% url 'patient:person_list' %}" class="btn btn-outline" style="margin-left: 1rem;">Clear Search</a>
+    </p>
+{% else %}
+    <p class="mb-2"><strong>{{ total_count }}</strong> person{{ total_count|pluralize }} total</p>
+{% endif %}
+
+<div id="person-table">
+    {% include 'patient/partials/person_table.html' %}
+</div>
+{% endblock %}

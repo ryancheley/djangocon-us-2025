@@ -1,0 +1,183 @@
+{% extends 'patient/base.html' %}
+
+{% block title %}{{ person.display_name }} - Patient Management{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-between align-center mb-3">
+    <h1>{{ person.formal_name }}</h1>
+    <div class="d-flex gap-1">
+        <a href="{% url 'patient:person_edit' person.pk %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'patient:person_list' %}" class="btn btn-outline">Back to List</a>
+    </div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+    <div class="card">
+        <div class="card-header">
+            <h3>Basic Information</h3>
+        </div>
+
+        <div style="display: grid; gap: 1rem;">
+            <div>
+                <strong>Full Name:</strong><br>
+                {{ person.full_name|default:"—" }}
+            </div>
+
+            {% if person.preferred_name %}
+                <div>
+                    <strong>Preferred Name:</strong><br>
+                    {{ person.preferred_name }}
+                </div>
+            {% endif %}
+
+            {% if person.date_of_birth %}
+                <div>
+                    <strong>Date of Birth:</strong><br>
+                    {{ person.date_of_birth|date:"F j, Y" }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>Name Components</h3>
+        </div>
+
+        <div style="display: grid; gap: 1rem;">
+            {% if person.given_names %}
+                <div>
+                    <strong>Given Names:</strong><br>
+                    {{ person.given_names }}
+                </div>
+            {% endif %}
+
+            {% if person.family_names %}
+                <div>
+                    <strong>Family Names:</strong><br>
+                    {{ person.family_names }}
+                </div>
+            {% endif %}
+
+            {% if person.middle_names %}
+                <div>
+                    <strong>Middle Names:</strong><br>
+                    {{ person.middle_names }}
+                </div>
+            {% endif %}
+
+            {% if person.prefix %}
+                <div>
+                    <strong>Prefix:</strong><br>
+                    {{ person.prefix }}
+                </div>
+            {% endif %}
+
+            {% if person.suffix %}
+                <div>
+                    <strong>Suffix:</strong><br>
+                    {{ person.suffix }}
+                </div>
+            {% endif %}
+
+            {% if person.patronymic %}
+                <div>
+                    <strong>Patronymic:</strong><br>
+                    {{ person.patronymic }}
+                </div>
+            {% endif %}
+
+            {% if person.matronymic %}
+                <div>
+                    <strong>Matronymic:</strong><br>
+                    {{ person.matronymic }}
+                </div>
+            {% endif %}
+
+            {% if person.legal_name %}
+                <div>
+                    <strong>Legal Name:</strong><br>
+                    {{ person.legal_name }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>Gender & Identity</h3>
+        </div>
+
+        <div style="display: grid; gap: 1rem;">
+            {% if person.gender_identity %}
+                <div>
+                    <strong>Gender Identity:</strong><br>
+                    {{ person.get_gender_identity_display }}
+                </div>
+            {% endif %}
+
+            {% if person.pronouns %}
+                <div>
+                    <strong>Pronouns:</strong><br>
+                    {{ person.display_pronouns }}
+                </div>
+            {% endif %}
+
+            {% if person.biological_sex %}
+                <div>
+                    <strong>Biological Sex:</strong><br>
+                    {{ person.get_biological_sex_display }}
+                </div>
+            {% endif %}
+
+            {% if person.legal_sex %}
+                <div>
+                    <strong>Legal Sex:</strong><br>
+                    {{ person.get_legal_sex_display }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>Record Information</h3>
+        </div>
+
+        <div style="display: grid; gap: 1rem;">
+            <div>
+                <strong>Created:</strong><br>
+                {{ person.created_at|date:"F j, Y \a\\t g:i A" }}<br>
+                <small style="color: #666;">by {{ person.created_by.username }}</small>
+            </div>
+
+            <div>
+                <strong>Last Updated:</strong><br>
+                {{ person.updated_at|date:"F j, Y \a\\t g:i A" }}<br>
+                <small style="color: #666;">by {{ person.updated_by.username }}</small>
+            </div>
+
+            <div>
+                <strong>Display Name:</strong><br>
+                {{ person.display_name }}
+            </div>
+
+            <div>
+                <strong>Sorting Name:</strong><br>
+                {{ person.get_name_for_sorting }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a href="{% url 'patient:person_edit' person.pk %}" class="btn btn-primary">Edit Person</a>
+    <button
+        class="btn btn-danger"
+        hx-delete="{% url 'patient:person_delete' person.pk %}"
+        hx-confirm="Are you sure you want to delete {{ person.display_name }}?"
+    >
+        Delete Person
+    </button>
+</div>
+{% endblock %}

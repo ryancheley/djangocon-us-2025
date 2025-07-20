@@ -1,0 +1,7 @@
+{% if show_field %}
+<div class="form-group">
+    <label for="id_custom_pronouns">Custom Pronouns</label>
+    <input type="text" name="custom_pronouns" class="form-input" placeholder="e.g., fae/faer" id="id_custom_pronouns" value="{{ form.custom_pronouns.value|default:'' }}">
+    <small style="color: #666;">Enter your preferred pronouns</small>
+</div>
+{% endif %}

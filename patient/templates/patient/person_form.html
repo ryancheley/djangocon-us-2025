@@ -1,0 +1,209 @@
+{% extends 'patient/base.html' %}
+
+{% block title %}{{ action }} Person - Patient Management{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-between align-center mb-3">
+    <h1>{{ action }} Person</h1>
+    <a href="{% url 'patient:person_list' %}" class="btn btn-outline">Back to List</a>
+</div>
+
+<form method="post" hx-post="{% if person %}{% url 'patient:person_edit' person.pk %}{% else %}{% url 'patient:person_create' %}{% endif %}">
+    {% csrf_token %}
+
+    <div class="card">
+        <div class="card-header">
+            <h3>Basic Information</h3>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="{{ form.full_name.id_for_label }}">{{ form.full_name.label }} *</label>
+                {{ form.full_name }}
+                {% if form.full_name.errors %}
+                    <div class="alert alert-error mt-1">{{ form.full_name.errors }}</div>
+                {% endif %}
+                <small style="color: #666;">{{ form.full_name.help_text }}</small>
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.preferred_name.id_for_label }}">{{ form.preferred_name.label }}</label>
+                {{ form.preferred_name }}
+                {% if form.preferred_name.errors %}
+                    <div class="alert alert-error mt-1">{{ form.preferred_name.errors }}</div>
+                {% endif %}
+                <small style="color: #666;">{{ form.preferred_name.help_text }}</small>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="{{ form.given_names.id_for_label }}">{{ form.given_names.label }}</label>
+                {{ form.given_names }}
+                {% if form.given_names.errors %}
+                    <div class="alert alert-error mt-1">{{ form.given_names.errors }}</div>
+                {% endif %}
+                <small style="color: #666;">{{ form.given_names.help_text }}</small>
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.family_names.id_for_label }}">{{ form.family_names.label }}</label>
+                {{ form.family_names }}
+                {% if form.family_names.errors %}
+                    <div class="alert alert-error mt-1">{{ form.family_names.errors }}</div>
+                {% endif %}
+                <small style="color: #666;">{{ form.family_names.help_text }}</small>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="{{ form.middle_names.id_for_label }}">{{ form.middle_names.label }}</label>
+                {{ form.middle_names }}
+                {% if form.middle_names.errors %}
+                    <div class="alert alert-error mt-1">{{ form.middle_names.errors }}</div>
+                {% endif %}
+                <small style="color: #666;">{{ form.middle_names.help_text }}</small>
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.date_of_birth.id_for_label }}">{{ form.date_of_birth.label }}</label>
+                {{ form.date_of_birth }}
+                {% if form.date_of_birth.errors %}
+                    <div class="alert alert-error mt-1">{{ form.date_of_birth.errors }}</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>Name Components</h3>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="{{ form.prefix.id_for_label }}">{{ form.prefix.label }}</label>
+                {{ form.prefix }}
+                {% if form.prefix.errors %}
+                    <div class="alert alert-error mt-1">{{ form.prefix.errors }}</div>
+                {% endif %}
+                <small style="color: #666;">{{ form.prefix.help_text }}</small>
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.suffix.id_for_label }}">{{ form.suffix.label }}</label>
+                {{ form.suffix }}
+                {% if form.suffix.errors %}
+                    <div class="alert alert-error mt-1">{{ form.suffix.errors }}</div>
+                {% endif %}
+                <small style="color: #666;">{{ form.suffix.help_text }}</small>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="{{ form.patronymic.id_for_label }}">{{ form.patronymic.label }}</label>
+                {{ form.patronymic }}
+                {% if form.patronymic.errors %}
+                    <div class="alert alert-error mt-1">{{ form.patronymic.errors }}</div>
+                {% endif %}
+                <small style="color: #666;">{{ form.patronymic.help_text }}</small>
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.matronymic.id_for_label }}">{{ form.matronymic.label }}</label>
+                {{ form.matronymic }}
+                {% if form.matronymic.errors %}
+                    <div class="alert alert-error mt-1">{{ form.matronymic.errors }}</div>
+                {% endif %}
+                <small style="color: #666;">{{ form.matronymic.help_text }}</small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.legal_name.id_for_label }}">{{ form.legal_name.label }}</label>
+            {{ form.legal_name }}
+            {% if form.legal_name.errors %}
+                <div class="alert alert-error mt-1">{{ form.legal_name.errors }}</div>
+            {% endif %}
+            <small style="color: #666;">{{ form.legal_name.help_text }}</small>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>Gender & Identity</h3>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="{{ form.gender_identity.id_for_label }}">{{ form.gender_identity.label }}</label>
+                {{ form.gender_identity }}
+                {% if form.gender_identity.errors %}
+                    <div class="alert alert-error mt-1">{{ form.gender_identity.errors }}</div>
+                {% endif %}
+                <small style="color: #666;">{{ form.gender_identity.help_text }}</small>
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.pronouns.id_for_label }}">{{ form.pronouns.label }}</label>
+                {{ form.pronouns }}
+                {% if form.pronouns.errors %}
+                    <div class="alert alert-error mt-1">{{ form.pronouns.errors }}</div>
+                {% endif %}
+                <small style="color: #666;">{{ form.pronouns.help_text }}</small>
+            </div>
+        </div>
+
+        <div id="custom-pronouns-field">
+            {% if form.pronouns.value == 'other' %}
+                {% include 'patient/partials/custom_pronouns_field.html' with show_field=True %}
+            {% else %}
+                {% include 'patient/partials/custom_pronouns_field.html' with show_field=False %}
+            {% endif %}
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="{{ form.biological_sex.id_for_label }}">{{ form.biological_sex.label }}</label>
+                {{ form.biological_sex }}
+                {% if form.biological_sex.errors %}
+                    <div class="alert alert-error mt-1">{{ form.biological_sex.errors }}</div>
+                {% endif %}
+                <small style="color: #666;">{{ form.biological_sex.help_text }}</small>
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.legal_sex.id_for_label }}">{{ form.legal_sex.label }}</label>
+                {{ form.legal_sex }}
+                {% if form.legal_sex.errors %}
+                    <div class="alert alert-error mt-1">{{ form.legal_sex.errors }}</div>
+                {% endif %}
+                <small style="color: #666;">{{ form.legal_sex.help_text }}</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex gap-1 justify-between">
+        <div>
+            <button type="submit" class="btn btn-primary">
+                {{ action }} Person
+                <span class="htmx-indicator spinner"></span>
+            </button>
+            <a href="{% url 'patient:person_list' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+
+        {% if person %}
+            <button
+                type="button"
+                class="btn btn-danger"
+                hx-delete="{% url 'patient:person_delete' person.pk %}"
+                hx-confirm="Are you sure you want to delete {{ person.display_name }}?"
+            >
+                Delete Person
+            </button>
+        {% endif %}
+    </div>
+</form>
+{% endblock %}

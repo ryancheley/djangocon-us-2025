@@ -20,9 +20,13 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
+from patient.views import login_view
+
 urlpatterns = [
+    path("", login_view, name="login"),
     path("admin/", admin.site.urls),
     path("health/", include("apps.accounts.urls")),
+    path("patient/", include("patient.urls")),
 ]
 
 if settings.DEBUG:

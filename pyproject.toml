@@ -60,5 +60,8 @@ omit = ["*/migrations/*", "*/tests/*", "*/venv/*", "*/virtualenv/*"]
 [tool.coverage.report]
 precision = 2
 
+[tool.pydocstyle]
+ignore = ["D203"]
+
 [tool.hatch.build.targets.wheel]
 packages = ["core"]

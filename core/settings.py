@@ -39,6 +39,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "apps.accounts",
+    "patient",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -147,6 +148,10 @@ SESSION_COOKIE_AGE = env("SESSION_COOKIE_AGE", default=3600, cast=int)
 # CSRF configuration
 CSRF_COOKIE_SECURE = env("CSRF_COOKIE_SECURE", default=not DEBUG)
 CSRF_COOKIE_HTTPONLY = env("CSRF_COOKIE_HTTPONLY", default=True)
+
+# Authentication URLs
+LOGIN_URL = "/"
+LOGIN_REDIRECT_URL = "/patient/"
 
 # Debug toolbar configuration (development only)
 if DEBUG:
