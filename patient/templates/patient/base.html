@@ -394,6 +394,7 @@
                 <nav class="nav">
                     {% if user.is_authenticated %}
                         <a href="{% url 'patient:person_list' %}">People</a>
+                        <a href="{% url 'patient_risk:list' %}">Risk Assessments</a>
                         <a href="{% url 'patient:person_create' %}" class="btn">Add Person</a>
                         <span>Welcome, {{ user.username }}</span>
                         <a href="{% url 'patient:logout' %}">Logout</a>

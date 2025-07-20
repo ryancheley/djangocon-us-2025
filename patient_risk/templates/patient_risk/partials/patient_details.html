@@ -1,0 +1,190 @@
+{% if patient %}
+<div class="patient-details-card">
+    <div class="patient-header">
+        <h4>{{ patient.full_name }}</h4>
+        {% if patient.preferred_name and patient.preferred_name != patient.full_name %}
+            <span class="preferred-name">"{{ patient.preferred_name }}"</span>
+        {% endif %}
+    </div>
+
+    <div class="patient-info-grid">
+        {% if patient.date_of_birth %}
+            <div class="info-item">
+                <span class="label">Date of Birth:</span>
+                <span class="value">{{ patient.date_of_birth|date:"M d, Y" }}</span>
+            </div>
+        {% endif %}
+
+        {% if patient.gender_identity %}
+            <div class="info-item">
+                <span class="label">Gender Identity:</span>
+                <span class="value">{{ patient.get_gender_identity_display }}</span>
+            </div>
+        {% endif %}
+
+        {% if patient.pronouns %}
+            <div class="info-item">
+                <span class="label">Pronouns:</span>
+                <span class="value">
+                    {% if patient.pronouns == 'custom' and patient.custom_pronouns %}
+                        {{ patient.custom_pronouns }}
+                    {% else %}
+                        {{ patient.get_pronouns_display }}
+                    {% endif %}
+                </span>
+            </div>
+        {% endif %}
+
+        {% if patient.biological_sex %}
+            <div class="info-item">
+                <span class="label">Biological Sex:</span>
+                <span class="value">{{ patient.get_biological_sex_display }}</span>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Previous Risk Assessments -->
+    {% if patient.patientriskassessment_set.exists %}
+        <div class="previous-assessments">
+            <h5>Previous Assessments</h5>
+            <div class="assessment-history">
+                {% for assessment in patient.patientriskassessment_set.all|slice:":3" %}
+                    <div class="assessment-item">
+                        <span class="score-badge score-{{ assessment.chads_score }}">
+                            {{ assessment.chads_score }}
+                        </span>
+                        <span class="assessment-date">
+                            {{ assessment.created_at|date:"M d, Y" }}
+                        </span>
+                    </div>
+                {% endfor %}
+                {% if patient.patientriskassessment_set.count > 3 %}
+                    <div class="more-assessments">
+                        +{{ patient.patientriskassessment_set.count|add:"-3" }} more
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<style>
+    .patient-details-card {
+        background: white;
+        border: 1px solid #d1d5db;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .patient-header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .patient-header h4 {
+        margin: 0;
+        color: #111827;
+    }
+
+    .preferred-name {
+        color: #6b7280;
+        font-style: italic;
+        font-size: 0.875rem;
+    }
+
+    .patient-info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .info-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .info-item .label {
+        font-size: 0.75rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #6b7280;
+    }
+
+    .info-item .value {
+        font-size: 0.875rem;
+        color: #111827;
+    }
+
+    .previous-assessments {
+        padding-top: 1rem;
+        border-top: 1px solid #e5e7eb;
+    }
+
+    .previous-assessments h5 {
+        margin: 0 0 0.5rem 0;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #374151;
+    }
+
+    .assessment-history {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .assessment-item {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 0.25rem 0.5rem;
+        background: #f3f4f6;
+        border-radius: 0.375rem;
+        font-size: 0.75rem;
+    }
+
+    .score-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 50%;
+        font-weight: 600;
+        font-size: 0.625rem;
+        color: white;
+    }
+
+    .assessment-date {
+        color: #6b7280;
+    }
+
+    .more-assessments {
+        color: #6b7280;
+        font-size: 0.75rem;
+        font-style: italic;
+    }
+</style>
+{% else %}
+<div class="no-patient-selected">
+    <p class="text-muted">Select a patient to view their details</p>
+</div>
+
+<style>
+    .no-patient-selected {
+        padding: 1rem;
+        text-align: center;
+        color: #6b7280;
+        font-style: italic;
+    }
+</style>
+{% endif %}

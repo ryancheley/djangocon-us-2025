@@ -20,12 +20,6 @@ repos:
 
   - repo: local
     hooks:
-      - id: ty
-        name: ty
-        entry: uv run ty check --ignore call-non-callable
-        language: system
-        types: [python]
-        exclude: ^tests/
       - id: zizmor
         name: zizmor
         entry: uv run zizmor

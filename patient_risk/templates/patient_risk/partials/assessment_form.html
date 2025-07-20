@@ -1,0 +1,179 @@
+<!-- Risk Assessment Form Fields -->
+<div class="form-sections">
+    <!-- Patient Selection Section -->
+    <div class="form-section">
+        <h3>Patient Information</h3>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="{{ form.person.id_for_label }}" class="form-label">
+                    {{ form.person.label_tag }}
+                </label>
+                {{ form.person }}
+                {% if form.person.help_text %}
+                    <small class="form-help">{{ form.person.help_text }}</small>
+                {% endif %}
+                {% if form.person.errors %}
+                    <div class="form-errors">
+                        {% for error in form.person.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Patient Details Display -->
+        <div id="patient-details" class="patient-details-container">
+            <!-- Patient details will be loaded here via HTMX -->
+        </div>
+    </div>
+
+    <!-- Risk Score Section -->
+    <div class="form-section">
+        <h3>Risk Assessment</h3>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="{{ form.chads_score.id_for_label }}" class="form-label">
+                    {{ form.chads_score.label_tag }}
+                </label>
+                {{ form.chads_score }}
+                {% if form.chads_score.help_text %}
+                    <small class="form-help">{{ form.chads_score.help_text }}</small>
+                {% endif %}
+                {% if form.chads_score.errors %}
+                    <div class="form-errors">
+                        {% for error in form.chads_score.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Risk Interpretation -->
+        <div class="risk-interpretation-live">
+            <div class="form-group">
+                <label class="form-label">Risk Interpretation</label>
+                <div id="risk-interpretation" class="risk-display">
+                    <span class="risk-placeholder">Enter a score to see risk interpretation</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Actions -->
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">
+            Create Risk Assessment
+        </button>
+        <a href="{% url 'patient_risk:list' %}" class="btn btn-outline">
+            Cancel
+        </a>
+    </div>
+</div>
+
+<!-- Live Risk Interpretation Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const scoreInput = document.querySelector('input[name="chads_score"]');
+        const riskDisplay = document.getElementById('risk-interpretation');
+
+        function updateRiskInterpretation() {
+            const score = parseInt(scoreInput.value) || 0;
+            let riskText = '';
+            let riskClass = '';
+
+            if (score === 0) {
+                riskText = 'Low Risk - Consider no anticoagulation';
+                riskClass = 'risk-low';
+            } else if (score === 1) {
+                riskText = 'Moderate Risk - Consider anticoagulation';
+                riskClass = 'risk-moderate';
+            } else if (score >= 2) {
+                riskText = 'High Risk - Anticoagulation recommended';
+                riskClass = 'risk-high';
+            } else {
+                riskText = 'Enter a score to see risk interpretation';
+                riskClass = 'risk-placeholder';
+            }
+
+            riskDisplay.innerHTML = `<span class="${riskClass}">${riskText}</span>`;
+        }
+
+        if (scoreInput) {
+            scoreInput.addEventListener('input', updateRiskInterpretation);
+            updateRiskInterpretation(); // Initial update
+        }
+    });
+</script>
+
+<!-- Additional Form Styling -->
+<style>
+    .form-sections {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .form-section {
+        padding: 1.5rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        background: #f9fafb;
+    }
+
+    .form-section h3 {
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #e5e7eb;
+        color: #374151;
+    }
+
+    .patient-details-container {
+        margin-top: 1rem;
+        min-height: 2rem;
+    }
+
+    .risk-interpretation-live {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid #e5e7eb;
+    }
+
+    .risk-display {
+        padding: 0.75rem;
+        border-radius: 0.375rem;
+        background: white;
+        border: 1px solid #d1d5db;
+        min-height: 2.5rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .risk-display .risk-low {
+        color: #065f46;
+        font-weight: 500;
+    }
+
+    .risk-display .risk-moderate {
+        color: #92400e;
+        font-weight: 500;
+    }
+
+    .risk-display .risk-high {
+        color: #991b1b;
+        font-weight: 500;
+    }
+
+    .risk-display .risk-placeholder {
+        color: #9ca3af;
+        font-style: italic;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid #e5e7eb;
+    }
+</style>

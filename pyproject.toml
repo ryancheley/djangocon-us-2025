@@ -65,3 +65,8 @@ ignore = ["D203"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["core"]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.12.4",
+]

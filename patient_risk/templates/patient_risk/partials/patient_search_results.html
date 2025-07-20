@@ -1,0 +1,137 @@
+{% if search_query and patients %}
+<div class="search-results-list">
+    <div class="search-header">
+        <small class="text-muted">{{ patients|length }} result{{ patients|length|pluralize }} for "{{ search_query }}"</small>
+    </div>
+    {% for patient in patients %}
+        <div class="search-result-item">
+            <div class="patient-summary">
+                <div class="patient-name">
+                    <strong>{{ patient.full_name }}</strong>
+                    {% if patient.preferred_name and patient.preferred_name != patient.full_name %}
+                        <span class="preferred-name">"{{ patient.preferred_name }}"</span>
+                    {% endif %}
+                </div>
+                <div class="patient-meta">
+                    {% if patient.date_of_birth %}
+                        <span>DOB: {{ patient.date_of_birth|date:"M d, Y" }}</span>
+                    {% endif %}
+                    {% if patient.gender_identity %}
+                        <span>{{ patient.get_gender_identity_display }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            <button type="button"
+                    class="btn btn-sm btn-outline patient-select-btn"
+                    data-patient-id="{{ patient.id }}"
+                    data-patient-name="{{ patient.full_name }}">
+                Select
+            </button>
+        </div>
+    {% endfor %}
+</div>
+{% elif search_query and not patients %}
+<div class="search-no-results">
+    <p class="text-muted">No patients found for "{{ search_query }}"</p>
+    <small class="text-muted">Try searching with a different name or check spelling</small>
+</div>
+{% endif %}
+
+<style>
+    .search-results-list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        border: 1px solid #d1d5db;
+        border-top: none;
+        border-radius: 0 0 0.5rem 0.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        z-index: 50;
+        max-height: 300px;
+        overflow-y: auto;
+    }
+
+    .search-header {
+        padding: 0.5rem 1rem;
+        background: #f9fafb;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .search-result-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #f3f4f6;
+        transition: background-color 0.15s ease;
+    }
+
+    .search-result-item:hover {
+        background: #f9fafb;
+    }
+
+    .search-result-item:last-child {
+        border-bottom: none;
+    }
+
+    .patient-summary {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .patient-name {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .patient-name strong {
+        color: #111827;
+    }
+
+    .preferred-name {
+        color: #6b7280;
+        font-style: italic;
+        font-size: 0.875rem;
+        font-weight: normal;
+    }
+
+    .patient-meta {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.75rem;
+        color: #6b7280;
+    }
+
+    .patient-select-btn {
+        flex-shrink: 0;
+        margin-left: 1rem;
+    }
+
+    .search-no-results {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        border: 1px solid #d1d5db;
+        border-top: none;
+        border-radius: 0 0 0.5rem 0.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        z-index: 50;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .search-no-results p {
+        margin-bottom: 0.25rem;
+    }
+
+    /* Make search container relative for absolute positioning of results */
+    .search-container {
+        position: relative;
+    }
+</style>

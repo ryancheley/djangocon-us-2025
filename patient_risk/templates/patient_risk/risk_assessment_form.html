@@ -1,0 +1,125 @@
+{% extends 'patient/base.html' %}
+
+{% block title %}Patient Risk Assessment{% endblock %}
+
+{% block content %}
+<div class="header-actions">
+    <h1>Create Risk Assessment</h1>
+    <div class="actions">
+        <a href="{% url 'patient_risk:list' %}" class="btn btn-outline">Back to List</a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h2>Patient Risk Assessment Form</h2>
+        <p class="text-muted">Enter CHADS2-VASc stroke risk assessment for a patient</p>
+    </div>
+
+    <div class="card-body">
+        <!-- Patient Search Section -->
+        <div class="form-section">
+            <h3>Select Patient</h3>
+            <div class="search-container">
+                <input type="text"
+                       class="form-input search-input"
+                       placeholder="Search patients by name..."
+                       hx-get="{% url 'patient_risk:search_patients' %}"
+                       hx-target="#patient-search-results"
+                       hx-trigger="input changed delay:300ms"
+                       name="search">
+                <div id="patient-search-results" class="search-results"></div>
+            </div>
+        </div>
+
+        <!-- Risk Assessment Form -->
+        <form hx-post="{% url 'patient_risk:create' %}"
+              hx-target="#form-container"
+              hx-swap="outerHTML"
+              class="risk-assessment-form">
+            {% csrf_token %}
+
+            <div id="form-container">
+                {% include 'patient_risk/partials/assessment_form.html' %}
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- CHADS2-VASc Information Card -->
+<div class="card info-card">
+    <div class="card-header">
+        <h3>CHADS2-VASc Scoring Guide</h3>
+    </div>
+    <div class="card-body">
+        <div class="scoring-guide">
+            <div class="score-section">
+                <h4>Risk Factors (1 point each):</h4>
+                <ul>
+                    <li><strong>C</strong>ongestive heart failure</li>
+                    <li><strong>H</strong>ypertension</li>
+                    <li><strong>A</strong>ge 65-74 years</li>
+                    <li><strong>D</strong>iabetes mellitus</li>
+                    <li><strong>S</strong>troke/TIA/thromboembolism history (2 points)</li>
+                    <li><strong>V</strong>ascular disease</li>
+                    <li><strong>A</strong>ge ≥75 years (2 points)</li>
+                    <li><strong>S</strong>ex category (female)</li>
+                </ul>
+            </div>
+
+            <div class="risk-interpretation">
+                <h4>Risk Interpretation:</h4>
+                <div class="risk-levels">
+                    <div class="risk-level low">
+                        <span class="score">0</span>
+                        <span class="desc">Low risk - Consider no anticoagulation</span>
+                    </div>
+                    <div class="risk-level moderate">
+                        <span class="score">1</span>
+                        <span class="desc">Moderate risk - Consider anticoagulation</span>
+                    </div>
+                    <div class="risk-level high">
+                        <span class="score">≥2</span>
+                        <span class="desc">High risk - Anticoagulation recommended</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Handle patient selection from search results
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('patient-select-btn')) {
+            const patientId = e.target.dataset.patientId;
+            const patientName = e.target.dataset.patientName;
+
+            // Update the select dropdown
+            const personSelect = document.querySelector('select[name="person"]');
+            if (personSelect) {
+                // Create option if it doesn't exist
+                let option = personSelect.querySelector(`option[value="${patientId}"]`);
+                if (!option) {
+                    option = document.createElement('option');
+                    option.value = patientId;
+                    option.textContent = patientName;
+                    personSelect.appendChild(option);
+                }
+
+                // Select the option
+                personSelect.value = patientId;
+
+                // Trigger change event for HTMX
+                personSelect.dispatchEvent(new Event('change'));
+            }
+
+            // Clear search results
+            document.getElementById('patient-search-results').innerHTML = '';
+
+            // Clear search input
+            document.querySelector('.search-input').value = '';
+        }
+    });
+</script>
+{% endblock %}
