@@ -110,3 +110,6 @@ uv.lock
 
 # pgAdmin configuration
 pgadmin-servers.json
+
+# local configuration files
+*local*
