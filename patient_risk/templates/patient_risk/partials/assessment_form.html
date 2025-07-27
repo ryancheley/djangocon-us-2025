@@ -95,82 +95,32 @@
 
             <div class="contraindications-grid">
                 <div class="form-group checkbox-group">
-                    {{ form.active_bleeding }}
-                    <label for="{{ form.active_bleeding.id_for_label }}" class="checkbox-label">
-                        {{ form.active_bleeding.label }}
+                    {{ form.warfarin_allergy }}
+                    <label for="{{ form.warfarin_allergy.id_for_label }}" class="checkbox-label">
+                        {{ form.warfarin_allergy.label }}
                     </label>
-                    {% if form.active_bleeding.help_text %}
-                        <small class="form-help">{{ form.active_bleeding.help_text }}</small>
+                    {% if form.warfarin_allergy.help_text %}
+                        <small class="form-help">{{ form.warfarin_allergy.help_text }}</small>
                     {% endif %}
                 </div>
 
                 <div class="form-group checkbox-group">
-                    {{ form.recent_stroke }}
-                    <label for="{{ form.recent_stroke.id_for_label }}" class="checkbox-label">
-                        {{ form.recent_stroke.label }}
+                    {{ form.bleeding_disorder }}
+                    <label for="{{ form.bleeding_disorder.id_for_label }}" class="checkbox-label">
+                        {{ form.bleeding_disorder.label }}
                     </label>
-                    {% if form.recent_stroke.help_text %}
-                        <small class="form-help">{{ form.recent_stroke.help_text }}</small>
+                    {% if form.bleeding_disorder.help_text %}
+                        <small class="form-help">{{ form.bleeding_disorder.help_text }}</small>
                     {% endif %}
                 </div>
 
                 <div class="form-group checkbox-group">
-                    {{ form.high_bleeding_risk }}
-                    <label for="{{ form.high_bleeding_risk.id_for_label }}" class="checkbox-label">
-                        {{ form.high_bleeding_risk.label }}
+                    {{ form.pregnancy_status }}
+                    <label for="{{ form.pregnancy_status.id_for_label }}" class="checkbox-label">
+                        {{ form.pregnancy_status.label }}
                     </label>
-                    {% if form.high_bleeding_risk.help_text %}
-                        <small class="form-help">{{ form.high_bleeding_risk.help_text }}</small>
-                    {% endif %}
-                </div>
-
-                <div class="form-group checkbox-group">
-                    {{ form.patient_refusal }}
-                    <label for="{{ form.patient_refusal.id_for_label }}" class="checkbox-label">
-                        {{ form.patient_refusal.label }}
-                    </label>
-                    {% if form.patient_refusal.help_text %}
-                        <small class="form-help">{{ form.patient_refusal.help_text }}</small>
-                    {% endif %}
-                </div>
-
-                <div class="form-group checkbox-group">
-                    {{ form.renal_impairment }}
-                    <label for="{{ form.renal_impairment.id_for_label }}" class="checkbox-label">
-                        {{ form.renal_impairment.label }}
-                    </label>
-                    {% if form.renal_impairment.help_text %}
-                        <small class="form-help">{{ form.renal_impairment.help_text }}</small>
-                    {% endif %}
-                </div>
-
-                <div class="form-group checkbox-group">
-                    {{ form.hepatic_impairment }}
-                    <label for="{{ form.hepatic_impairment.id_for_label }}" class="checkbox-label">
-                        {{ form.hepatic_impairment.label }}
-                    </label>
-                    {% if form.hepatic_impairment.help_text %}
-                        <small class="form-help">{{ form.hepatic_impairment.help_text }}</small>
-                    {% endif %}
-                </div>
-
-                <div class="form-group checkbox-group">
-                    {{ form.drug_interactions }}
-                    <label for="{{ form.drug_interactions.id_for_label }}" class="checkbox-label">
-                        {{ form.drug_interactions.label }}
-                    </label>
-                    {% if form.drug_interactions.help_text %}
-                        <small class="form-help">{{ form.drug_interactions.help_text }}</small>
-                    {% endif %}
-                </div>
-
-                <div class="form-group checkbox-group">
-                    {{ form.surgical_risk }}
-                    <label for="{{ form.surgical_risk.id_for_label }}" class="checkbox-label">
-                        {{ form.surgical_risk.label }}
-                    </label>
-                    {% if form.surgical_risk.help_text %}
-                        <small class="form-help">{{ form.surgical_risk.help_text }}</small>
+                    {% if form.pregnancy_status.help_text %}
+                        <small class="form-help">{{ form.pregnancy_status.help_text }}</small>
                     {% endif %}
                 </div>
             </div>
