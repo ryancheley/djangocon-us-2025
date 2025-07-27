@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Django db_comment: Self-Documenting Healthcare Databases</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/black.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <section>
+                <h2>Where <code>help_text</code> Falls Short</h2>
+                <ul>
+                    <li class="bullet-item" data-index="0" style="opacity: 0;"><strong>Report development team using SSRS/Tableau:</strong> Can't see <code>help_text</code></li>
+                    <li class="bullet-item" data-index="1" style="opacity: 0;"><strong>Database migrations:</strong> No context for schema changes</li>
+                    <!-- <li class="fragment"><strong>Legacy system integration:</strong> External tools need field documentation</li> -->
+                    <!-- <li class="fragment"><strong>Regulatory audits:</strong> Auditors examine database directly, not Django admin or front end</li> -->
+                    <li class="bullet-item" data-index="2" style="opacity: 0;"><strong>Cross-team collaboration:</strong> ETL developers building dimensions without field context</li>
+                </ul>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="slide-nav">
+        <a href="slide-01-title.html">Start</a>
+        <a href="slide-08-different-audiences.html" id="prev-slide">← Prev</a>
+        <a href="slide-10-django-db-comment.html" id="next-slide">Next →</a>
+        <span id="slide-counter">9 / 22</span>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js"></script>
+
+    <script>
+        Reveal.initialize({
+            hash: true,
+            controls: true,
+            progress: true,
+            center: true,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            autoSlide: false,
+            autoSlideStoppable: true,
+
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
+
+            width: 1280,
+            height: 720,
+            margin: 0.1,
+            minScale: 0.2,
+            maxScale: 1.5
+        });
+
+        // Custom bullet point navigation
+        let currentBulletIndex = -1;
+        const totalBullets = 3; // 3 bullet points
+
+        function showNextBullet() {
+            if (currentBulletIndex < totalBullets - 1) {
+                currentBulletIndex++;
+                const bullet = document.querySelector(`[data-index="${currentBulletIndex}"]`);
+                if (bullet) {
+                    bullet.style.opacity = '1';
+                }
+                return true;
+            }
+            return false;
+        }
+
+        function hidePrevBullet() {
+            if (currentBulletIndex >= 0) {
+                const bullet = document.querySelector(`[data-index="${currentBulletIndex}"]`);
+                if (bullet) {
+                    bullet.style.opacity = '0';
+                }
+                currentBulletIndex--;
+                return true;
+            }
+            return false;
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.keyCode === 33 || e.key === 'ArrowLeft') {
+                // Page Up (back button on remote) or Left Arrow
+                e.preventDefault();
+                if (!hidePrevBullet()) {
+                    // No more bullets to hide - go to previous slide
+                    window.location.href = 'slide-08-different-audiences.html';
+                }
+            } else if (e.keyCode === 34 || e.key === 'ArrowRight' || e.key === ' ') {
+                // Page Down (forward button on remote), Right Arrow, or Space
+                e.preventDefault();
+                if (!showNextBullet()) {
+                    // No more bullets to show - go to next slide
+                    window.location.href = 'slide-10-django-db-comment.html';
+                }
+            }
+        });
+
+        Reveal.addKeyBinding({keyCode: 27, key: 'Escape', description: 'Toggle overview'}, function() {
+            Reveal.toggleOverview();
+        });
+    </script>
+</body>
+</html>

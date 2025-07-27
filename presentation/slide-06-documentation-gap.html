@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Django db_comment: Self-Documenting Healthcare Databases</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/black.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <section>
+                <h2>The Documentation Gap</h2>
+                <ul>
+                    <li class="bullet-item" data-index="0" style="opacity: 0;">Code comments ≠ Database documentation</li>
+                    <li class="bullet-item" data-index="1" style="opacity: 0;">Wiki pages get stale</li>
+                    <li class="bullet-item" data-index="2" style="opacity: 0;">Common knowledge doesn't scale</li>
+                    <li class="bullet-item" data-index="3" style="opacity: 0;">Regulatory auditors need field-level documentation</li>
+                </ul>
+                <div class="warning-point bullet-item" data-index="4" style="opacity: 0;">
+                    <strong>Challenge:</strong> Documentation lives separate from the data structure
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="slide-nav">
+        <a href="slide-01-title.html">Start</a>
+        <a href="slide-05-current-state.html" id="prev-slide">← Prev</a>
+        <a href="slide-07-help-text-limitation.html" id="next-slide">Next →</a>
+        <span id="slide-counter">6 / 22</span>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js"></script>
+
+    <script>
+        Reveal.initialize({
+            hash: true,
+            controls: true,
+            progress: true,
+            center: true,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            autoSlide: false,
+            autoSlideStoppable: true,
+
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
+
+            width: 1280,
+            height: 720,
+            margin: 0.1,
+            minScale: 0.2,
+            maxScale: 1.5
+        });
+
+        // Custom bullet point navigation
+        let currentBulletIndex = -1;
+        const totalBullets = 5; // 4 bullets + 1 warning box
+
+        function showNextBullet() {
+            if (currentBulletIndex < totalBullets - 1) {
+                currentBulletIndex++;
+                const bullet = document.querySelector(`[data-index="${currentBulletIndex}"]`);
+                if (bullet) {
+                    bullet.style.opacity = '1';
+                }
+                return true;
+            }
+            return false;
+        }
+
+        function hidePrevBullet() {
+            if (currentBulletIndex >= 0) {
+                const bullet = document.querySelector(`[data-index="${currentBulletIndex}"]`);
+                if (bullet) {
+                    bullet.style.opacity = '0';
+                }
+                currentBulletIndex--;
+                return true;
+            }
+            return false;
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.keyCode === 33 || e.key === 'ArrowLeft') {
+                // Page Up (back button on remote) or Left Arrow
+                e.preventDefault();
+                if (!hidePrevBullet()) {
+                    // No more bullets to hide - go to previous slide
+                    window.location.href = 'slide-05-current-state.html';
+                }
+            } else if (e.keyCode === 34 || e.key === 'ArrowRight' || e.key === ' ') {
+                // Page Down (forward button on remote), Right Arrow, or Space
+                e.preventDefault();
+                if (!showNextBullet()) {
+                    // No more bullets to show - go to next slide
+                    window.location.href = 'slide-07-help-text-limitation.html';
+                }
+            }
+        });
+
+        Reveal.addKeyBinding({keyCode: 27, key: 'Escape', description: 'Toggle overview'}, function() {
+            Reveal.toggleOverview();
+        });
+    </script>
+</body>
+</html>

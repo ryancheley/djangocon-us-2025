@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Django db_comment: Self-Documenting Healthcare Databases</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/black.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section data-timing="4min">
+                <h2>Different Audiences, Different Needs</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Stakeholder</th>
+                            <th>Needs</th>
+                            <th><code>help_text</code></th>
+                            <th><code>db_comment</code></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="bullet-item" data-index="0" style="opacity: 0;">End Users</td>
+                            <td class="bullet-item" data-index="1" style="opacity: 0;">Form guidance</td>
+                            <td class="bullet-item positive" data-index="2" style="opacity: 0;">✓ Yes</td>
+                            <td class="bullet-item negative" data-index="3" style="opacity: 0;">✗ No</td>
+                        </tr>
+                        <tr>
+                            <td class="bullet-item" data-index="4" style="opacity: 0;">Developers</td>
+                            <td class="bullet-item" data-index="5" style="opacity: 0;">Field purpose</td>
+                            <td class="bullet-item negative" data-index="6" style="opacity: 0;">✗ Limited</td>
+                            <td class="bullet-item positive" data-index="7" style="opacity: 0;">✓ Yes</td>
+                        </tr>
+                        <tr>
+                            <td class="bullet-item" data-index="8" style="opacity: 0;">DBAs</td>
+                            <td class="bullet-item" data-index="9" style="opacity: 0;">Schema docs</td>
+                            <td class="bullet-item negative" data-index="10" style="opacity: 0;">✗ No</td>
+                            <td class="bullet-item positive" data-index="11" style="opacity: 0;">✓ Yes</td>
+                        </tr>
+                        <tr>
+                            <td class="bullet-item" data-index="12" style="opacity: 0;">Report Developers</td>
+                            <td class="bullet-item" data-index="13" style="opacity: 0;">Field definitions</td>
+                            <td class="bullet-item negative" data-index="14" style="opacity: 0;">✗ No</td>
+                            <td class="bullet-item positive" data-index="15" style="opacity: 0;">✓ Yes</td>
+                        </tr>
+                        <tr>
+                            <td class="bullet-item" data-index="16" style="opacity: 0;">Data Analysts</td>
+                            <td class="bullet-item" data-index="17" style="opacity: 0;">DB context</td>
+                            <td class="bullet-item negative" data-index="18" style="opacity: 0;">✗ No</td>
+                            <td class="bullet-item positive" data-index="19" style="opacity: 0;">✓ Yes</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="slide-nav">
+        <a href="slide-01-title.html">Start</a>
+        <a href="slide-07-help-text-limitation.html" id="prev-slide">← Prev</a>
+        <a href="slide-09-help-text-falls-short.html" id="next-slide">Next →</a>
+        <span id="slide-counter">8 / 22</span>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js"></script>
+
+    <script>
+        Reveal.initialize({
+            hash: true,
+            controls: true,
+            progress: true,
+            center: true,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            autoSlide: false,
+            autoSlideStoppable: true,
+
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
+
+            width: 1280,
+            height: 720,
+            margin: 0.1,
+            minScale: 0.2,
+            maxScale: 1.5
+        });
+
+        // Custom bullet point navigation for table cells
+        let currentBulletIndex = -1;
+        const totalBullets = 20; // 5 rows × 4 columns
+
+        function showNextBullet() {
+            if (currentBulletIndex < totalBullets - 1) {
+                currentBulletIndex++;
+                const bullet = document.querySelector(`[data-index="${currentBulletIndex}"]`);
+                if (bullet) {
+                    bullet.style.opacity = '1';
+                }
+                return true;
+            }
+            return false;
+        }
+
+        function hidePrevBullet() {
+            if (currentBulletIndex >= 0) {
+                const bullet = document.querySelector(`[data-index="${currentBulletIndex}"]`);
+                if (bullet) {
+                    bullet.style.opacity = '0';
+                }
+                currentBulletIndex--;
+                return true;
+            }
+            return false;
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.keyCode === 33 || e.key === 'ArrowLeft') {
+                // Page Up (back button on remote) or Left Arrow
+                e.preventDefault();
+                if (!hidePrevBullet()) {
+                    // No more bullets to hide - go to previous slide
+                    window.location.href = 'slide-07-help-text-limitation.html';
+                }
+            } else if (e.keyCode === 34 || e.key === 'ArrowRight' || e.key === ' ') {
+                // Page Down (forward button on remote), Right Arrow, or Space
+                e.preventDefault();
+                if (!showNextBullet()) {
+                    // No more bullets to show - go to next slide
+                    window.location.href = 'slide-09-help-text-falls-short.html';
+                }
+            }
+        });
+
+        Reveal.addKeyBinding({keyCode: 27, key: 'Escape', description: 'Toggle overview'}, function() {
+            Reveal.toggleOverview();
+        });
+    </script>
+</body>
+</html>
