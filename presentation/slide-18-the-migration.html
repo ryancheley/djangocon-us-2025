@@ -17,21 +17,27 @@
         <div class="slides">
 
             <section>
-                <h2>The Migration</h2>
+                <h2>The Migration - Adding Documentation</h2>
                 <div class="large-code bullet-item" data-index="0" style="opacity: 0;">
-                    <pre><code class="python"># Generated migration
-operations = [
-    migrations.AlterField(
-        model_name='patientriskassessment',
-        name='chads_score',
-        field=models.IntegerField(
-            db_comment='CHA2DS2-VASc stroke risk (0-9)...'
+                    <pre><code class="python"># Generated migration adds comments to existing tables
+class Migration(migrations.Migration):
+    operations = [
+        migrations.AlterModelTableComment(
+            name='patientriskassessment',
+            table_comment='Cardiovascular risk calculations per Joint Commission PC-03...'
         ),
-    ),
-]</code></pre>
+        migrations.AlterField(
+            model_name='patientriskassessment',
+            name='chads_score',
+            field=models.IntegerField(
+                db_comment='CHA2DS2-VASc stroke risk (0-9). ≥2 indicates anticoagulation consideration.'
+            ),
+        ),
+        # Adds comments to all fields without disrupting production
+    ]</code></pre>
                 </div>
                 <div class="success-point bullet-item" data-index="1" style="opacity: 0;">
-                    <strong>Safe Migration:</strong> Comments are metadata - no data loss
+                    <strong>Zero Downtime:</strong> Metadata-only changes, no table locks or data migration
                 </div>
             </section>
 

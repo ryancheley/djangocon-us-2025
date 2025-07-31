@@ -17,11 +17,16 @@
         <div class="slides">
 
             <section data-timing="2min">
-                <h2>Start Today - 3 Steps</h2>
+                <h2>Start Today - Transform Your Database Documentation</h2>
+                <div class="intro-text bullet-item" data-index="0" style="opacity: 0;">
+                    <p>You've seen the power of self-documenting databases. Here's how to implement it:</p>
+                </div>
                 <ol>
-                    <li class="bullet-item" data-index="0" style="opacity: 0;"><strong>Audit:</strong> Identify your top 10 confusing fields</li>
-                    <li class="bullet-item" data-index="1" style="opacity: 0;"><strong>Document:</strong> Add <code>db_comment</code> with business context + compliance notes</li>
-                    <li class="bullet-item" data-index="2" style="opacity: 0;"><strong>Standardize:</strong> Update code review templates</li>
+                    <li class="bullet-item" data-index="1" style="opacity: 0;"><strong>Audit:</strong> Identify your top 10 confusing fields
+                        <br><em>Example: "What does 'hospice_flag' mean? When is it set?"</em></li>
+                    <li class="bullet-item" data-index="2" style="opacity: 0;"><strong>Document:</strong> Add <code>db_comment</code> with business context + compliance notes
+                        <br><em>Example: "Patient enrolled in hospice care. Set via ADT feed when discharge_disposition='50'. Excludes from quality measures per CMS guidelines."</em></li>
+                    <li class="bullet-item" data-index="3" style="opacity: 0;"><strong>Standardize:</strong> Update code review templates to require db_comments for new fields</li>
                 </ol>
             </section>
 
@@ -32,8 +37,8 @@
     <div class="slide-nav">
         <a href="slide-01-title.html">Start</a>
         <a href="slide-20-dba-view.html" id="prev-slide">← Prev</a>
-        <a href="slide-22-resources.html" id="next-slide">Next →</a>
-        <span id="slide-counter">21 / 22</span>
+        <a href="slide-22-thank-you.html" id="next-slide">Next →</a>
+        <span id="slide-counter">21 / 23</span>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
@@ -64,7 +69,7 @@
 
         // Custom bullet point navigation
         let currentBulletIndex = -1;
-        const totalBullets = 3; // 3 steps
+        const totalBullets = 4; // 1 intro + 3 steps
 
         function showNextBullet() {
             if (currentBulletIndex < totalBullets - 1) {
@@ -104,7 +109,7 @@
                 e.preventDefault();
                 if (!showNextBullet()) {
                     // No more bullets to show - go to next slide
-                    window.location.href = 'slide-22-resources.html';
+                    window.location.href = 'slide-22-thank-you.html';
                 }
             }
         });

@@ -16,38 +16,15 @@
     <div class="reveal">
         <div class="slides">
 
-            <section>
-                <h2>Resources</h2>
-                <div class="resources-grid">
-                    <div class="resource-item fragment">
-                        <img src="images/qr-github-repo.png" alt="GitHub Repository QR Code" class="qr-code">
-                        <p><strong>Example Code</strong><br>
-                        <code>github.com/ryancheley/django-db-comments-patient-risk</code></p>
-                    </div>
-                    <div class="resource-item fragment">
-                        <img src="images/qr-django-field-docs.png" alt="Django Field Docs QR Code" class="qr-code">
-                        <p><strong>Field Documentation</strong><br>
-                        Django <code>db_comment</code> docs</p>
-                    </div>
-                    <div class="resource-item fragment">
-                        <img src="images/qr-django-table-docs.png" alt="Django Table Docs QR Code" class="qr-code">
-                        <p><strong>Table Documentation</strong><br>
-                        Django <code>db_table_comment</code> docs</p>
-                    </div>
-                    <div class="resource-item fragment">
-                        <img src="images/qr-django-ticket.png" alt="Django Ticket QR Code" class="qr-code">
-                        <p><strong>Original Request</strong><br>
-                        Django Ticket #18468</p>
-                    </div>
-                    <div class="resource-item fragment">
-                        <img src="images/qr-django-release-notes.png" alt="Django Release Notes QR Code" class="qr-code">
-                        <p><strong>Release Notes</strong><br>
-                        Django 4.2 feature announcement</p>
-                    </div>
-                </div>
-                <div class="success-point fragment">
-                    <h3>Questions?</h3>
-                    <p>Let's make healthcare databases self-documenting!</p>
+            <section data-timing="1min">
+                <h1>Thank You!</h1>
+                <div class="contact-info">
+                    <p>Questions?</p>
+                    <p style="font-size: 1.5em; margin-top: 40px;">Ryan Cheley</p>
+                    <p style="margin-top: 20px;">
+                        <a href="https://fosstodon.org/@ryancheley">@ryancheley@fosstodon.org</a><br>
+                        <a href="https://www.ryancheley.com">ryancheley.com</a>
+                    </p>
                 </div>
             </section>
 
@@ -58,8 +35,8 @@
     <div class="slide-nav">
         <a href="slide-01-title.html">Start</a>
         <a href="slide-21-start-today.html" id="prev-slide">← Prev</a>
-        <a href="#" id="next-slide">Next →</a>
-        <span id="slide-counter">22 / 22</span>
+        <a href="slide-23-resources.html" id="next-slide">Next →</a>
+        <span id="slide-counter">22 / 23</span>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
@@ -90,22 +67,14 @@
 
         // Keyboard navigation
         document.addEventListener('keydown', function(e) {
-            // Check if there are fragments on current slide
-            var hasFragments = Reveal.availableFragments().prev;
-
             if (e.keyCode === 33 || e.key === 'ArrowLeft') {
                 // Page Up (back button on remote) or Left Arrow
                 e.preventDefault();
-                if (hasFragments) {
-                    // Go back to previous fragment
-                    Reveal.prev();
-                } else {
-                    // Go to previous slide
-                    window.location.href = 'slide-21-start-today.html';
-                }
+                window.location.href = 'slide-21-start-today.html';
             } else if (e.keyCode === 34 || e.key === 'ArrowRight' || e.key === ' ') {
                 // Page Down (forward button on remote), Right Arrow, or Space
-                // Last slide - no next
+                e.preventDefault();
+                window.location.href = 'slide-23-resources.html';
             }
         });
 

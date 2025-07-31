@@ -21,11 +21,14 @@
                 <div class="xlarge-code bullet-item" data-index="0" style="opacity: 0;">
                     <pre><code class="python">class PatientRiskAssessment(models.Model):
     chads_score = models.IntegerField(
-        db_comment="CHA2DS2-VASc stroke risk score calculation"
+        db_comment="CHA2DS2-VASc stroke risk (0-9). ≥2 indicates anticoagulation consideration."
     )</code></pre>
                 </div>
                 <div class="success-point bullet-item" data-index="1" style="opacity: 0;">
                     <strong>Solution:</strong> Documentation lives in the database itself
+                </div>
+                <div class="info-point bullet-item" data-index="2" style="opacity: 0;">
+                    <strong>Supported databases:</strong> PostgreSQL, Oracle, MySQL
                 </div>
             </section>
 
@@ -68,7 +71,7 @@
 
         // Custom bullet point navigation
         let currentBulletIndex = -1;
-        const totalBullets = 2; // 1 code + 1 solution point
+        const totalBullets = 3; // 1 code + 1 solution point + 1 info point
 
         function showNextBullet() {
             if (currentBulletIndex < totalBullets - 1) {

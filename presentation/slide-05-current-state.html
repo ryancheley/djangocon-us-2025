@@ -17,7 +17,7 @@
         <div class="slides">
 
             <section data-timing="3min">
-                <h2>Current State - EHR Database Schema</h2>
+                <h2>Current State - Database Schema</h2>
                 <div class="large-code bullet-item" data-index="0" style="opacity: 0;">
                     <pre><code class="sql">-- What our database looks like today
 CREATE TABLE patient_risk_patientriskassessment (
@@ -25,11 +25,13 @@ CREATE TABLE patient_risk_patientriskassessment (
     chads_score INTEGER,
     hasbled_score INTEGER,
     qrisk3_value DECIMAL(5,2),
+    contraindication_flags JSONB,
     last_calc_date TIMESTAMP
 );</code></pre>
                 </div>
                 <div class="pain-point bullet-item" data-index="1" style="opacity: 0;">
                     <strong>Mystery Fields:</strong> What do these cryptic names actually mean?
+                    <br><em>Note: We're now introducing additional fields beyond CHADS Score</em>
                 </div>
             </section>
 

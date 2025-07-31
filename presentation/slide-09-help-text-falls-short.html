@@ -20,10 +20,7 @@
                 <h2>Where <code>help_text</code> Falls Short</h2>
                 <ul>
                     <li class="bullet-item" data-index="0" style="opacity: 0;"><strong>Report development team using SSRS/Tableau:</strong> Can't see <code>help_text</code></li>
-                    <li class="bullet-item" data-index="1" style="opacity: 0;"><strong>Database migrations:</strong> No context for schema changes</li>
-                    <!-- <li class="fragment"><strong>Legacy system integration:</strong> External tools need field documentation</li> -->
-                    <!-- <li class="fragment"><strong>Regulatory audits:</strong> Auditors examine database directly, not Django admin or front end</li> -->
-                    <li class="bullet-item" data-index="2" style="opacity: 0;"><strong>Cross-team collaboration:</strong> ETL developers building dimensions without field context</li>
+                    <li class="bullet-item" data-index="1" style="opacity: 0;"><strong>Cross-team collaboration:</strong> ETL developers building dimensions without field context</li>
                 </ul>
             </section>
 
@@ -66,7 +63,7 @@
 
         // Custom bullet point navigation
         let currentBulletIndex = -1;
-        const totalBullets = 3; // 3 bullet points
+        const totalBullets = 2; // 2 bullet points
 
         function showNextBullet() {
             if (currentBulletIndex < totalBullets - 1) {

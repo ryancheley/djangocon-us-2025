@@ -17,20 +17,37 @@
         <div class="slides">
 
             <section>
-                <h2>Complete Context - Table-Level Documentation</h2>
-                <div class="large-code fragment">
-                    <pre><code class="python">class PatientRiskAssessment(models.Model):
-    chads_score = models.IntegerField(
-        db_comment="CHA2DS2-VASc stroke risk (0-9). ≥2 indicates anticoagulation consideration."
-    )
-    hasbled_score = models.IntegerField(
-        db_comment="HAS-BLED bleeding risk (0-9). ≥3 indicates high bleeding risk."
-    )
-
-    class Meta:
-        db_table_comment = ("Cardiovascular risk calculations per "
-                           "Joint Commission PC-03. Updated nightly "
-                           "via clinical_calc_job. Owner: CardioTeam@hospital.org")</code></pre>
+                <h2>Resources</h2>
+                <div class="resources-grid">
+                    <div class="resource-item fragment">
+                        <img src="images/qr-github-repo.png" alt="GitHub Repository QR Code" class="qr-code">
+                        <p><strong>Example Code</strong><br>
+                        <code>github.com/ryancheley/django-db-comments-patient-risk</code></p>
+                    </div>
+                    <div class="resource-item fragment">
+                        <img src="images/qr-django-field-docs.png" alt="Django Field Docs QR Code" class="qr-code">
+                        <p><strong>Field Documentation</strong><br>
+                        Django <code>db_comment</code> docs</p>
+                    </div>
+                    <div class="resource-item fragment">
+                        <img src="images/qr-django-table-docs.png" alt="Django Table Docs QR Code" class="qr-code">
+                        <p><strong>Table Documentation</strong><br>
+                        Django <code>db_table_comment</code> docs</p>
+                    </div>
+                    <div class="resource-item fragment">
+                        <img src="images/qr-django-ticket.png" alt="Django Ticket QR Code" class="qr-code">
+                        <p><strong>Original Request</strong><br>
+                        Django Ticket #18468</p>
+                    </div>
+                    <div class="resource-item fragment">
+                        <img src="images/qr-django-release-notes.png" alt="Django Release Notes QR Code" class="qr-code">
+                        <p><strong>Release Notes</strong><br>
+                        Django 4.2 feature announcement</p>
+                    </div>
+                </div>
+                <div class="success-point fragment">
+                    <h3>Questions?</h3>
+                    <p>Let's make healthcare databases self-documenting!</p>
                 </div>
             </section>
 
@@ -40,9 +57,9 @@
     <!-- Navigation -->
     <div class="slide-nav">
         <a href="slide-01-title.html">Start</a>
-        <a href="slide-16-complex-json-example.html" id="prev-slide">← Prev</a>
-        <a href="slide-18-the-migration.html" id="next-slide">Next →</a>
-        <span id="slide-counter">17 / 22</span>
+        <a href="slide-22-thank-you.html" id="prev-slide">← Prev</a>
+        <a href="#" id="next-slide">Next →</a>
+        <span id="slide-counter">23 / 23</span>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
@@ -74,29 +91,21 @@
         // Keyboard navigation
         document.addEventListener('keydown', function(e) {
             // Check if there are fragments on current slide
-            var hasNextFragment = Reveal.availableFragments().next;
-            var hasPrevFragment = Reveal.availableFragments().prev;
+            var hasFragments = Reveal.availableFragments().prev;
 
             if (e.keyCode === 33 || e.key === 'ArrowLeft') {
                 // Page Up (back button on remote) or Left Arrow
                 e.preventDefault();
-                if (hasPrevFragment) {
+                if (hasFragments) {
                     // Go back to previous fragment
                     Reveal.prev();
                 } else {
                     // Go to previous slide
-                    window.location.href = 'slide-16-complex-json-example.html';
+                    window.location.href = 'slide-22-thank-you.html';
                 }
             } else if (e.keyCode === 34 || e.key === 'ArrowRight' || e.key === ' ') {
                 // Page Down (forward button on remote), Right Arrow, or Space
-                e.preventDefault();
-                if (hasNextFragment) {
-                    // Reveal next fragment
-                    Reveal.next();
-                } else {
-                    // Go to next slide
-                    window.location.href = 'slide-18-the-migration.html';
-                }
+                // Last slide - no next
             }
         });
 
