@@ -1,0 +1,17 @@
+# The Cross-Team Confusion
+
+--
+
+.slack-thread[
+.slack-message[
+.slack-user[@web-developer]: Just pushed new field `chads_score` to PatientRisk model
+]
+]
+
+???
+
+This is a real scenario from our healthcare system. I want to show you what happens when a developer adds a new database field without proper documentation.
+
+Here's a typical Slack conversation that happens multiple times per week in healthcare IT teams.
+
+A web developer pushes a new field - looks innocent enough, right?

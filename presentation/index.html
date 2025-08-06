@@ -1,543 +1,286 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
     <title>Django db_comment: Self-Documenting Healthcare Databases</title>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/black.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/monokai.css">
-
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic" rel="stylesheet">
     <style>
-        /* Custom styles for better conference presentation */
-        .reveal {
-            font-family: "Source Sans Pro", Helvetica, sans-serif;
+        body { font-family: 'Droid Serif'; }
+        h1, h2, h3 {
+            font-family: 'Yanone Kaffeesatz';
+            font-weight: normal;
+        }
+        .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+        /* Custom styles */
+        .remark-slide-content {
+            font-size: 1.5em;
+            padding: 1em 2em;
         }
 
-        .reveal h1, .reveal h2, .reveal h3 {
-            color: #ffffff;
-            font-weight: 600;
+        .remark-slide-content h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
         }
 
-        .reveal h1 {
+        .remark-slide-content h2 {
             font-size: 2.5em;
-            line-height: 1.2;
+            margin-bottom: 0.5em;
         }
 
-        .reveal h2 {
-            font-size: 2.0em;
-            line-height: 1.2;
+        .remark-slide-content h3 {
+            font-size: 2em;
+            margin-bottom: 0.5em;
         }
 
-        .reveal h3 {
-            font-size: 1.6em;
-            line-height: 1.2;
-        }
-
-        .reveal p, .reveal li {
-            font-size: 1.3em;
-            line-height: 1.4;
-        }
-
-        .reveal code {
-            font-size: 1.1em;
-            background: #2d3748;
-            padding: 0.2em 0.4em;
-            border-radius: 0.3em;
-        }
-
-        .reveal pre {
-            font-size: 0.7em;
-            line-height: 1.4;
-        }
-
-        .reveal pre code {
-            font-size: 1.0em;
-            padding: 1em;
-            max-height: 600px;
-            background: #2d3748;
-        }
-
-        /* Table styling */
-        .reveal table {
-            font-size: 1.1em;
-            border-collapse: collapse;
-        }
-
-        .reveal table th,
-        .reveal table td {
-            padding: 0.8em 1em;
-            border: 1px solid #555;
-        }
-
-        .reveal table th {
-            background: #4a5568;
-        }
-
-        /* Fragment animations */
-        .reveal .fragment.highlight-red.visible {
-            color: #ff6b6b;
-        }
-
-        .reveal .fragment.highlight-green.visible {
-            color: #51cf66;
-        }
-
-        /* Timing indicator */
-        .timing-indicator {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(0,0,0,0.7);
-            color: #fff;
-            padding: 0.5em 1em;
-            border-radius: 0.5em;
+        .remark-code {
             font-size: 0.8em;
-            z-index: 100;
+            background: #f0f0f0;
+            padding: 0.5em;
+        }
+
+        .remark-inline-code {
+            background: #f0f0f0;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
         }
 
         /* Pain point styling */
         .pain-point {
-            background: #4a1a1a;
-            border-left: 5px solid #ff6b6b;
+            background: #ffebee;
+            border-left: 5px solid #f44336;
             padding: 1em;
             margin: 1em 0;
-            border-radius: 0.5em;
+            border-radius: 0.3em;
         }
 
         /* Success styling */
         .success-point {
-            background: #1a4a1a;
-            border-left: 5px solid #51cf66;
+            background: #e8f5e9;
+            border-left: 5px solid #4caf50;
             padding: 1em;
             margin: 1em 0;
-            border-radius: 0.5em;
+            border-radius: 0.3em;
         }
 
         /* Slack thread styling */
         .slack-thread {
-            background: #2d3748;
+            background: #f5f5f5;
             border-radius: 0.5em;
             padding: 1.5em;
             margin: 1em 0;
             text-align: left;
-            font-family: 'Courier New', monospace;
+            font-family: 'Ubuntu Mono', monospace;
+            font-size: 0.8em;
         }
 
         .slack-message {
             margin: 0.5em 0;
             padding: 0.5em;
-            border-left: 3px solid #4299e1;
+            border-left: 3px solid #2196f3;
         }
 
         .slack-user {
-            color: #4299e1;
+            color: #2196f3;
             font-weight: bold;
         }
 
         /* Database schema styling */
         .db-schema {
-            background: #1a202c;
-            border: 2px solid #4a5568;
+            background: #f5f5f5;
+            border: 2px solid #ccc;
             border-radius: 0.5em;
             padding: 1.5em;
             margin: 1em 0;
         }
 
-        /* Larger fonts for better visibility */
-        .reveal .large-code pre code {
+        /* Table styling */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 0.5em;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+        }
+
+        /* Highlight colors */
+        .highlight-red { color: #f44336; }
+        .highlight-green { color: #4caf50; }
+
+        /* Center content */
+        .center {
+            text-align: center;
+        }
+
+        /* Large code */
+        .large-code .remark-code {
+            font-size: 1em;
+        }
+
+        .xlarge-code .remark-code {
             font-size: 1.2em;
         }
 
-        .reveal .xlarge-code pre code {
-            font-size: 1.4em;
+
+        /* Two column layout */
+        .left-column {
+            width: 48%;
+            float: left;
+        }
+
+        .right-column {
+            width: 48%;
+            float: right;
+        }
+
+        /* Clear floats */
+        .clear {
+            clear: both;
+        }
+
+        /* QR code container */
+        .qr-container {
+            text-align: center;
+            margin: 1em 0;
+        }
+
+        .qr-container img {
+            max-width: 300px;
+            max-height: 300px;
+        }
+
+        /* Small text */
+        .small {
+            font-size: 0.8em;
+        }
+
+        /* Presenter notes */
+        .remark-notes {
+            font-size: 1.2em;
         }
     </style>
 </head>
-
 <body>
-    <div class="reveal">
-        <div class="slides">
-            <!-- Title Slide -->
-            <section>
-                <h1>Django <code>db_comment</code></h1>
-                <h2>Self-Documenting Healthcare Databases</h2>
-                <p>
-                    <small>DjangoCon US 2025 • 25 Minutes</small>
-                </p>
-            </section>
-
-            <!-- Opening Hook Section (3 minutes) -->
-            <section>
-                <section data-timing="3min">
-                    <div class="timing-indicator">3 minutes</div>
-                    <h2>The Cross-Team Confusion</h2>
-                    <div class="slack-thread">
-                        <div class="slack-message">
-                            <span class="slack-user">@developer</span>: Just pushed new field `chads_score` to PatientRisk model
-                        </div>
-                        <div class="slack-message fragment">
-                            <span class="slack-user">@etl-dev</span>: Need to add this to risk dimension table - what does it calculate?
-                        </div>
-                        <div class="slack-message fragment">
-                            <span class="slack-user">@report-dev</span>: Also need this for the new dashboard - waiting on dimension specs
-                        </div>
-                        <div class="slack-message fragment">
-                            <span class="slack-user">@developer</span>: *30 minutes later* It's the CHA2DS2-VASc stroke risk score...
-                        </div>
-                    </div>
-                    <div class="pain-point fragment">
-                        <strong>Pain Point:</strong> What does <code>chads_score</code> actually calculate for this new dimension?
-                    </div>
-                </section>
-
-                <section>
-                    <h2>The Real Cost</h2>
-                    <ul>
-                        <li class="fragment">ETL pipeline delays waiting for field clarification</li>
-                        <li class="fragment">Report development blocked on dimension requirements</li>
-                        <li class="fragment">Developer productivity loss across teams</li>
-                        <li class="fragment">Regulatory compliance challenges</li>
-                    </ul>
-                </section>
-            </section>
-
-            <!-- Problem Definition Section (3 minutes) -->
-            <section>
-                <section data-timing="3min">
-                    <div class="timing-indicator">3 minutes</div>
-                    <h2>Current State - EHR Database Schema</h2>
-                    <div class="large-code">
-                        <pre><code class="sql">-- What our database looks like today
-CREATE TABLE patient_risk_patientriskassessment (
-    id INTEGER PRIMARY KEY,
-    chads_score INTEGER,
-    hasbled_score INTEGER,
-    qrisk3_value DECIMAL(5,2),
-    last_calc_date TIMESTAMP
-);</code></pre>
-                    </div>
-                    <div class="pain-point fragment">
-                        <strong>Mystery Fields:</strong> What do these cryptic names actually mean?
-                    </div>
-                </section>
-
-                <section>
-                    <h2>The Documentation Gap</h2>
-                    <ul>
-                        <li class="fragment">Code comments ≠ Database documentation</li>
-                        <li class="fragment">Wiki pages get stale</li>
-                        <li class="fragment">Tribal knowledge doesn't scale</li>
-                        <li class="fragment">Regulatory auditors need field-level documentation</li>
-                    </ul>
-                </section>
-            </section>
-
-            <!-- Why Not Just help_text? Section (4 minutes) -->
-            <section>
-                <section data-timing="4min">
-                    <div class="timing-indicator">4 minutes</div>
-                    <h2>The <code>help_text</code> Limitation</h2>
-                    <div class="large-code">
-                        <pre><code class="python"># help_text - UI focused
-class PatientRiskAssessment(models.Model):
-    chads_score = models.IntegerField(
-        help_text="Enter the patient's CHA2DS2-VASc score"
-    )</code></pre>
-                    </div>
-                    <div class="fragment">
-                        <p><strong>Problem:</strong> Only visible in Django admin forms</p>
-                    </div>
-                </section>
-
-                <section>
-                    <h2>Different Audiences, Different Needs</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Stakeholder</th>
-                                <th>Needs</th>
-                                <th><code>help_text</code></th>
-                                <th><code>db_comment</code></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="fragment">
-                                <td>End Users</td>
-                                <td>Form guidance</td>
-                                <td class="fragment highlight-green">✅</td>
-                                <td class="fragment highlight-red">❌</td>
-                            </tr>
-                            <tr class="fragment">
-                                <td>Developers</td>
-                                <td>Field purpose</td>
-                                <td class="fragment highlight-red">❌*</td>
-                                <td class="fragment highlight-green">✅</td>
-                            </tr>
-                            <tr class="fragment">
-                                <td>DBAs</td>
-                                <td>Schema understanding</td>
-                                <td class="fragment highlight-red">❌</td>
-                                <td class="fragment highlight-green">✅</td>
-                            </tr>
-                            <tr class="fragment">
-                                <td>Auditors</td>
-                                <td>Compliance docs</td>
-                                <td class="fragment highlight-red">❌</td>
-                                <td class="fragment highlight-green">✅</td>
-                            </tr>
-                            <tr class="fragment">
-                                <td>Data Analysts</td>
-                                <td>Direct DB context</td>
-                                <td class="fragment highlight-red">❌</td>
-                                <td class="fragment highlight-green">✅</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="fragment"><small>*Only if they're looking at Django admin</small></p>
-                </section>
-
-                <section>
-                    <h2>Where <code>help_text</code> Falls Short</h2>
-                    <ul>
-                        <li class="fragment"><strong>Data team using Metabase/Tableau:</strong> Can't see <code>help_text</code></li>
-                        <li class="fragment"><strong>Database migrations:</strong> No context for schema changes</li>
-                        <li class="fragment"><strong>Legacy system integration:</strong> External tools need field documentation</li>
-                        <li class="fragment"><strong>Regulatory audits:</strong> Auditors examine database directly, not Django admin</li>
-                        <li class="fragment"><strong>Cross-team collaboration:</strong> ETL developers building dimensions without field context</li>
-                    </ul>
-                </section>
-            </section>
-
-            <!-- Solution Introduction Section (3 minutes) -->
-            <section>
-                <section data-timing="3min">
-                    <div class="timing-indicator">3 minutes</div>
-                    <h2>Django 4.2's <code>db_comment</code></h2>
-                    <div class="xlarge-code">
-                        <pre><code class="python">class PatientRiskAssessment(models.Model):
-    chads_score = models.IntegerField(
-        db_comment="CHA2DS2-VASc stroke risk score calculation"
-    )</code></pre>
-                    </div>
-                    <div class="success-point fragment">
-                        <strong>Solution:</strong> Documentation lives in the database itself
-                    </div>
-                </section>
-
-                <section>
-                    <h2>What This Generates</h2>
-                    <div class="large-code">
-                        <pre><code class="sql">-- PostgreSQL output
-CREATE TABLE patient_risk_patientriskassessment (
-    chads_score INTEGER NOT NULL
-);
-COMMENT ON COLUMN patient_risk_patientriskassessment.chads_score IS
-'CHA2DS2-VASc stroke risk score calculation';</code></pre>
-                    </div>
-                    <div class="success-point fragment">
-                        <strong>Result:</strong> Anyone querying the database sees the documentation
-                    </div>
-                </section>
-            </section>
-
-            <!-- Code Walkthrough Section (8 minutes) -->
-            <section>
-                <section data-timing="8min">
-                    <div class="timing-indicator">8 minutes</div>
-                    <h2>Before - The Mystery Fields</h2>
-                    <div class="large-code">
-                        <pre><code class="python"># patient_risk/models.py
-class PatientRiskAssessment(models.Model):
-    chads_score = models.IntegerField()
-    hasbled_score = models.IntegerField()
-    qrisk3_value = models.DecimalField(max_digits=5, decimal_places=2)
-    contraindication_flags = models.JSONField()</code></pre>
-                    </div>
-                    <div class="pain-point fragment">
-                        <strong>Problem:</strong> ETL developer has no idea what these fields represent
-                    </div>
-                </section>
-
-                <section>
-                    <h2>After - Self-Documenting Models</h2>
-                    <div class="large-code">
-                        <pre><code class="python">class PatientRiskAssessment(models.Model):
-    chads_score = models.IntegerField(
-        db_comment="CHA2DS2-VASc stroke risk (0-9). "
-                  "≥2 indicates anticoagulation consideration. "
-                  "Per 2010 ESC Guidelines."
-    )</code></pre>
-                    </div>
-                    <div class="fragment">
-                        <pre><code class="python">    hasbled_score = models.IntegerField(
-        db_comment="HAS-BLED bleeding risk (0-9). "
-                  "≥3 indicates high bleeding risk. "
-                  "FDA guidance 2019."
-    )</code></pre>
-                    </div>
-                    <div class="success-point fragment">
-                        <strong>Result:</strong> Context for ETL dimension creation and report development
-                    </div>
-                </section>
-
-                <section>
-                    <h2>Complex Example - JSON Fields</h2>
-                    <div class="large-code">
-                        <pre><code class="python">contraindication_flags = models.JSONField(
-    db_comment="Clinical contraindications per CMS-134v8. "
-              "Keys: warfarin_allergy, bleeding_disorder, "
-              "pregnancy_status. Boolean values only."
-)</code></pre>
-                    </div>
-                    <div class="fragment">
-                        <p><strong>Why This Matters:</strong> Data analysts know the JSON structure without digging through code</p>
-                    </div>
-                </section>
-
-                <section>
-                    <h2>Complete Context - Table-Level Documentation</h2>
-                    <div class="large-code">
-                        <pre><code class="python">class PatientRiskAssessment(models.Model):
-    chads_score = models.IntegerField(
-        db_comment="CHA2DS2-VASc stroke risk (0-9)..."
-    )
-    hasbled_score = models.IntegerField(
-        db_comment="HAS-BLED bleeding risk (0-9)..."
-    )
-
-    class Meta:
-        db_table_comment = ("Cardiovascular risk calculations per "
-                           "Joint Commission PC-03. Updated nightly "
-                           "via clinical_calc_job. Owner: CardioTeam")</code></pre>
-                    </div>
-                </section>
-
-                <section>
-                    <h2>The Migration</h2>
-                    <div class="large-code">
-                        <pre><code class="python"># Generated migration
-operations = [
-    migrations.AlterField(
-        model_name='patientriskassessment',
-        name='chads_score',
-        field=models.IntegerField(
-            db_comment='CHA2DS2-VASc stroke risk (0-9)...'
-        ),
-    ),
-]</code></pre>
-                    </div>
-                    <div class="fragment">
-                        <p><strong>Safe Migration:</strong> Comments are metadata - no data loss</p>
-                    </div>
-                </section>
-
-                <section>
-                    <h2>Both Features Working Together</h2>
-                    <div class="large-code">
-                        <pre><code class="python"># The complete picture
-class PatientRiskAssessment(models.Model):
-    chads_score = models.IntegerField(
-        help_text="Enter score 0-9 based on patient risk factors",  # For clinicians
-        db_comment="CHA2DS2-VASc stroke risk (0-9). ≥2 indicates "
-                  "anticoagulation per ESC 2010. Regulatory: CMS-134v8"  # For everyone else
-    )</code></pre>
-                    </div>
-                    <div class="success-point fragment">
-                        <strong>Best Practice:</strong> Use both - they serve different audiences
-                    </div>
-                </section>
-            </section>
-
-            <!-- Real-World Impact Section (2 minutes) -->
-            <section>
-                <section data-timing="2min">
-                    <div class="timing-indicator">2 minutes</div>
-                    <h2>Database Administrator View</h2>
-                    <div class="db-schema">
-                        <h4>pgAdmin Column Information</h4>
-                        <p><strong>Table:</strong> patient_risk_patientriskassessment</p>
-                        <p><strong>Column:</strong> chads_score</p>
-                        <p><strong>Type:</strong> integer</p>
-                        <p><strong>Comment:</strong> CHA2DS2-VASc stroke risk (0-9). ≥2 indicates anticoagulation consideration. Per 2010 ESC Guidelines.</p>
-                    </div>
-                    <div class="success-point fragment">
-                        <strong>Impact:</strong> DBAs understand fields without calling developers
-                    </div>
-                </section>
-
-                <section>
-                    <h2>Measurable Results</h2>
-                    <ul>
-                        <li class="fragment"><strong>Developer onboarding:</strong> 3 weeks → 1 week</li>
-                        <li class="fragment"><strong>Regulatory audit prep:</strong> 40 hours → 15 hours</li>
-                        <li class="fragment"><strong>ETL pipeline delays:</strong> 2-3 per sprint → 0</li>
-                        <li class="fragment"><strong>Cross-team questions:</strong> 15 per week → 3 per week</li>
-                    </ul>
-                </section>
-            </section>
-
-            <!-- Takeaways Section (2 minutes) -->
-            <section>
-                <section data-timing="2min">
-                    <div class="timing-indicator">2 minutes</div>
-                    <h2>Start Today - 3 Steps</h2>
-                    <ol>
-                        <li class="fragment"><strong>Audit:</strong> Identify your top 10 confusing fields</li>
-                        <li class="fragment"><strong>Document:</strong> Add <code>db_comment</code> with business context + compliance notes</li>
-                        <li class="fragment"><strong>Standardize:</strong> Update code review templates</li>
-                    </ol>
-                </section>
-
-                <section>
-                    <h2>Resources</h2>
-                    <ul>
-                        <li>GitHub repo: <code>github.com/yourhandle/django-db-comments-patient-risk</code></li>
-                        <li>Django docs reference</li>
-                        <li>Healthcare-specific comment templates</li>
-                    </ul>
-                    <div class="success-point">
-                        <h3>Questions?</h3>
-                        <p>Let's make healthcare databases self-documenting!</p>
-                    </div>
-                </section>
-            </section>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js"></script>
-
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
     <script>
-        Reveal.initialize({
-            hash: true,
-            controls: true,
-            progress: true,
-            center: true,
-            transition: 'slide',
-            transitionSpeed: 'default',
-            backgroundTransition: 'fade',
+        async function loadSlides() {
+            const slideFiles = [
+                '01-title.md',
+                '02-intro-ryan.md',
+                '03a-cross-team-confusion-part1.md',
+                '03b-cross-team-confusion-part2.md',
+                '03c-cross-team-confusion-part3.md',
+                '03d-cross-team-confusion-part4.md',
+                '04-real-cost.md',
+                '05-current-state.md',
+                '06-documentation-gap.md',
+                '07-help-text-limitation.md',
+                '08a-table-header.md',
+                '08b-enduser-stakeholder.md',
+                '08c-enduser-needs.md',
+                '08d-enduser-helptext.md',
+                '08e-enduser-dbcomment.md',
+                '08f-developer-stakeholder.md',
+                '08g-developer-needs.md',
+                '08h-developer-helptext.md',
+                '08i-developer-dbcomment.md',
+                '08j-dba-stakeholder.md',
+                '08k-dba-needs.md',
+                '08l-dba-helptext.md',
+                '08m-dba-dbcomment.md',
+                '08n-auditor-stakeholder.md',
+                '08o-auditor-needs.md',
+                '08p-auditor-helptext.md',
+                '08q-auditor-dbcomment.md',
+                '08r-analyst-stakeholder.md',
+                '08s-analyst-needs.md',
+                '08t-analyst-helptext.md',
+                '08u-analyst-dbcomment.md',
+                '09-help-text-falls-short.md',
+                '10-django-db-comment.md',
+                '11-what-this-generates.md',
+                '12-before-mystery-fields.md',
+                '13-after-self-documenting.md',
+                '14-complex-json-example.md',
+                '15-table-level-docs.md',
+                '16-the-migration.md',
+                '17-both-features-together.md',
+                '18a-dba-view-part1.md',
+                '18b-dba-view-part2.md',
+                '18c-dba-view-part3.md',
+                '18d-dba-view-part4.md',
+                '19-start-today.md',
+                '20-resources.md',
+                '21-find-me.md',
+                '22-questions.md',
+                '23-thank-you.md'
+            ];
 
-            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
+            let allSlides = '';
 
-            // Presentation sizing
-            width: 1280,
-            height: 720,
-            margin: 0.1,
+            try {
+                for (const file of slideFiles) {
+                    console.log(`Loading ${file}...`);
+                    const response = await fetch(`slides/${file}`);
 
-            // Factor of the display size that should remain empty around the content
-            minScale: 0.2,
-            maxScale: 1.5
-        });
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
 
-        // Add keyboard shortcuts for presentation control
-        Reveal.addKeyBinding({keyCode: 27, key: 'Escape', description: 'Toggle overview'}, function() {
-            Reveal.toggleOverview();
-        });
+                    const content = await response.text();
+                    console.log(`Loaded ${file}, content length: ${content.length}`);
+
+                    allSlides += content;
+
+                    if (file !== slideFiles[slideFiles.length - 1]) {
+                        allSlides += '\n\n---\n\n';
+                    }
+                }
+
+
+                console.log(`Total slides content length: ${allSlides.length}`);
+
+                // Initialize remark directly with the content
+                var slideshow = remark.create({
+                    source: allSlides,
+                    ratio: '16:9',
+                    highlightStyle: 'monokai',
+                    highlightLanguage: 'python',
+                    highlightLines: true,
+                    countIncrementalSlides: false,
+                    navigation: {
+                        scroll: false,
+                        touch: true,
+                        click: false
+                    }
+                });
+
+                console.log('Remark slideshow initialized successfully');
+
+            } catch (error) {
+                console.error('Error loading slides:', error);
+
+                // Initialize remark with error message
+                var slideshow = remark.create({
+                    source: `# Error Loading Slides\n\nUnable to load slides: ${error.message}`,
+                    ratio: '16:9'
+                });
+            }
+        }
+
+        // Load slides when page is ready
+        document.addEventListener('DOMContentLoaded', loadSlides);
     </script>
 </body>
 </html>
