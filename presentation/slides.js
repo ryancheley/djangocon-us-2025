@@ -1,74 +1,53 @@
 async function loadSlides() {
-    const slideFiles = [
-        '00-start.md',
-        '01-title.md',
-        '02-intro-ryan.md',
-        '03a-cross-team-confusion-part1.md',
-        '03b-cross-team-confusion-part2.md',
-        '03c-cross-team-confusion-part3.md',
-        '03d-cross-team-confusion-part4.md',
-        '04-real-cost.md',
-        '05-current-state.md',
-        '06-documentation-gap.md',
-        '07-help-text-limitation.md',
-        '08a-table-header.md',
-        '08b-enduser-stakeholder.md',
-        '08c-enduser-needs.md',
-        '08d-enduser-helptext.md',
-        '08e-enduser-dbcomment.md',
-        '08f-developer-stakeholder.md',
-        '08g-developer-needs.md',
-        '08h-developer-helptext.md',
-        '08i-developer-dbcomment.md',
-        '08j-dba-stakeholder.md',
-        '08k-dba-needs.md',
-        '08l-dba-helptext.md',
-        '08m-dba-dbcomment.md',
-        '08n-auditor-stakeholder.md',
-        '08o-auditor-needs.md',
-        '08p-auditor-helptext.md',
-        '08q-auditor-dbcomment.md',
-        '08r-analyst-stakeholder.md',
-        '08s-analyst-needs.md',
-        '08t-analyst-helptext.md',
-        '08u-analyst-dbcomment.md',
-        '09-help-text-falls-short.md',
-        '10-django-db-comment.md',
-        '11-what-this-generates.md',
-        '12-before-mystery-fields.md',
-        '13-after-self-documenting.md',
-        '14-complex-json-example.md',
-        '15-table-level-docs.md',
-        '16-the-migration.md',
-        '17-both-features-together.md',
-        '18a-dba-view-part1.md',
-        '18b-dba-view-part2.md',
-        '18c-dba-view-part3.md',
-        '18d-dba-view-part4.md',
-        '19-start-today.md',
-        '20-resources.md',
-        '21-find-me.md',
-        '22-questions.md',
-        '23-thank-you.md'
-    ];
-
     let allSlides = '';
 
     try {
-        for (const file of slideFiles) {
-            console.log(`Loading ${file}...`);
-            const response = await fetch(`slides/${file}`);
+        // First, fetch the list of files in the slides directory
+        // Since we can't directly list directory contents in the browser,
+        // we'll fetch a known file that lists all slides or use a different approach
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+        // For now, we'll create a list endpoint or use a different strategy
+        // Let's try to fetch the slides directory listing
+        const response = await fetch('slides/');
+        const text = await response.text();
+
+        // Parse the directory listing to find .md files
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, 'text/html');
+        const links = Array.from(doc.querySelectorAll('a'));
+
+        // Extract .md files and sort them naturally
+        const slideFiles = links
+            .map(link => link.getAttribute('href'))
+            .filter(href => href && href.endsWith('.md'))
+            .sort((a, b) => {
+                // Natural sort to handle numbers correctly
+                return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
+            });
+
+        console.log('Found slide files:', slideFiles);
+
+        if (slideFiles.length === 0) {
+            throw new Error('No .md files found in slides directory');
+        }
+
+        // Load each slide file
+        for (let i = 0; i < slideFiles.length; i++) {
+            const file = slideFiles[i];
+            console.log(`Loading ${file}...`);
+            const slideResponse = await fetch(`slides/${file}`);
+
+            if (!slideResponse.ok) {
+                throw new Error(`HTTP error loading ${file}! status: ${slideResponse.status}`);
             }
 
-            const content = await response.text();
+            const content = await slideResponse.text();
             console.log(`Loaded ${file}, content length: ${content.length}`);
 
             allSlides += content;
 
-            if (file !== slideFiles[slideFiles.length - 1]) {
+            // Add separator between slides except for the last one
+            if (i < slideFiles.length - 1) {
                 allSlides += '\n\n---\n\n';
             }
         }
