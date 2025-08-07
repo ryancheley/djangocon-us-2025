@@ -1,6 +1,9 @@
+# Title
+
 class: center, middle
 
 # Django `db_comment`
+
 ## Self-Documenting Databases
 
 .small[DjangoCon US 2025]

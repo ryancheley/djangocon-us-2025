@@ -1,4 +1,4 @@
-## Ryan Cheley
+# Ryan Cheley
 
 Associate Vice President of Business Informatics & NextGen Support Services
 
@@ -13,7 +13,6 @@ Associate Vice President of Business Informatics & NextGen Support Services
 - **7 years** with Django
 
 --
-
 
 .success-point[
 **Why this talk?** I believe in the importance of documentation and the great benefit it can have on intrateam communication

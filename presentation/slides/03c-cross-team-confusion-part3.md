@@ -1,3 +1,3 @@
 # The Cross-Team Confusion (continued)
 
-![](images/three-hours-later.jpg)
+![Three Hours Later image](images/three-hours-later.jpg)

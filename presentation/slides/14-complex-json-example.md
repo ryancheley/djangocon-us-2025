@@ -1,6 +1,7 @@
 # Complex Example - JSON Fields
 
 .large-code[
+
 ```python
 contraindication_flags = models.JSONField(
     db_comment="Clinical contraindications per CMS-134v8. "
@@ -8,6 +9,7 @@ contraindication_flags = models.JSONField(
               "pregnancy_status. Boolean values only."
 )
 ```
+
 ]
 
 --

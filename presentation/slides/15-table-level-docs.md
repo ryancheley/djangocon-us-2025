@@ -1,6 +1,7 @@
 # Complete Context - Table-Level Documentation
 
 .large-code[
+
 ```python
 class PatientRiskAssessment(models.Model):
     chads_score = models.IntegerField(
@@ -14,6 +15,7 @@ class PatientRiskAssessment(models.Model):
                            "Joint Commission PC-03. Updated nightly "
                            "via clinical_calc_job. Owner: CardioTeam")
 ```
+
 ]
 
 .success-point[

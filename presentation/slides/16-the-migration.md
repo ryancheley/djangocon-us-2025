@@ -1,6 +1,7 @@
 # The Migration
 
 .large-code[
+
 ```python
 # Generated migration
 operations = [
@@ -13,6 +14,7 @@ operations = [
     ),
 ]
 ```
+
 ]
 
 --

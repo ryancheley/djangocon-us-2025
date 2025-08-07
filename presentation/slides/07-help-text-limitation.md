@@ -1,6 +1,7 @@
 # The `help_text` Limitation
 
 .large-code[
+
 ```python
 # help_text - UI focused
 class PatientRiskAssessment(models.Model):
@@ -8,6 +9,7 @@ class PatientRiskAssessment(models.Model):
         help_text="Enter the patient's CHA2DS2-VASc score"
     )
 ```
+
 ]
 
 --

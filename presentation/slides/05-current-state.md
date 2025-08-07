@@ -1,6 +1,7 @@
 # Current State - EHR Database Schema
 
 .large-code[
+
 ```sql
 -- What our database looks like today
 CREATE TABLE patient_risk_patientriskassessment (
@@ -12,6 +13,7 @@ CREATE TABLE patient_risk_patientriskassessment (
     last_calc_date TIMESTAMP
 );
 ```
+
 ]
 
 --

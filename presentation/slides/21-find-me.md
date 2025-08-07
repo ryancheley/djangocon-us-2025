@@ -1,14 +1,16 @@
 # Find Me
 
 .left-column[
+
 ## Online
-- 🐘 **Mastodon:** @ryancheley@mastodon.social
+- 🐘 **Mastodon:** @<ryancheley@mastodon.social>
 - 💼 **LinkedIn:** linkedin.com/in/ryan-cheley
 - 📝 **Blog:** ryancheley.com
 - 💻 **GitHub:** github.com/ryancheley
 ]
 
 .right-column[
+
 ## This Talk
 - 📊 **Slides:** Available on GitHub
 - 🔗 **Resources:** Links in final slide
@@ -16,7 +18,9 @@
 ]
 
 .clear[
+
 ## Let's Connect!
+
 I'd love to hear about your database documentation challenges and successes.
 
 ???

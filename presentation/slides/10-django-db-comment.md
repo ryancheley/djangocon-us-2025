@@ -1,12 +1,14 @@
 # Django 4.2's `db_comment`
 
 .xlarge-code[
+
 ```python
 class PatientRiskAssessment(models.Model):
     chads_score = models.IntegerField(
         db_comment="CHA2DS2-VASc stroke risk score calculation"
     )
 ```
+
 ]
 
 --

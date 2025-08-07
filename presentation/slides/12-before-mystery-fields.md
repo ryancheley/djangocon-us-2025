@@ -1,6 +1,7 @@
 # Before - The Mystery Fields
 
 .large-code[
+
 ```python
 # patient_risk/models.py
 class PatientRiskAssessment(models.Model):
@@ -9,6 +10,7 @@ class PatientRiskAssessment(models.Model):
     qrisk3_value = models.DecimalField(max_digits=5, decimal_places=2)
     contraindication_flags = models.JSONField()
 ```
+
 ]
 
 --

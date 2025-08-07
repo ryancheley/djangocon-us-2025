@@ -1,6 +1,5 @@
 # Database Administrator View (continued)
 
-
 .left-column[
     <img src="images/contraindication_flags.png" width="400" alt="Contraindication Flags without comment">
 ]

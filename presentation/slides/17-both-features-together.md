@@ -1,6 +1,7 @@
 # Both Features Working Together
 
 .code[
+
 ```python
 # The complete picture
 class PatientRiskAssessment(models.Model):
@@ -10,6 +11,7 @@ class PatientRiskAssessment(models.Model):
                   "anticoagulation per ESC 2010. Regulatory: CMS-134v8"  # For everyone else
     )
 ```
+
 ]
 
 --

@@ -1,6 +1,7 @@
 # After - Self-Documenting Models
 
 .large-code[
+
 ```python
 class PatientRiskAssessment(models.Model):
     chads_score = models.IntegerField(
@@ -9,6 +10,7 @@ class PatientRiskAssessment(models.Model):
                   "Per 2010 ESC Guidelines."
     )
 ```
+
 ]
 
 --
