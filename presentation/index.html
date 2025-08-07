@@ -269,6 +269,30 @@
 
                 console.log('Remark slideshow initialized successfully');
 
+                // Add debounced navigation to prevent double-clicks from presentation pointers
+                let lastNavigationTime = 0;
+                const DEBOUNCE_DELAY = 300; // milliseconds
+
+                // Override the default navigation functions with debounced versions
+                const originalNext = slideshow.gotoNextSlide.bind(slideshow);
+                const originalPrev = slideshow.gotoPreviousSlide.bind(slideshow);
+
+                slideshow.gotoNextSlide = function() {
+                    const now = Date.now();
+                    if (now - lastNavigationTime > DEBOUNCE_DELAY) {
+                        lastNavigationTime = now;
+                        originalNext();
+                    }
+                };
+
+                slideshow.gotoPreviousSlide = function() {
+                    const now = Date.now();
+                    if (now - lastNavigationTime > DEBOUNCE_DELAY) {
+                        lastNavigationTime = now;
+                        originalPrev();
+                    }
+                };
+
             } catch (error) {
                 console.error('Error loading slides:', error);
 
