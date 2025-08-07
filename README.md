@@ -134,7 +134,3 @@ The project enforces code quality through:
 - HTTPS enforcement in production
 - Security headers configured
 - Regular security checks: `just security-check`
-
-## License
-
-[Add your license here]
