@@ -1,0 +1,22 @@
+# After - Self-Documenting Models
+
+```python
+
+    ...
+
+    hasbled_score = models.IntegerField(
+        db_comment="HAS-BLED bleeding risk (0-9). "
+                  "≥3 indicates high bleeding risk. "
+                  "FDA guidance 2019."
+    )
+```
+
+--
+
+.success-point[
+**Result**
+]
+
+???
+
+Context for ETL dimension creation and report development

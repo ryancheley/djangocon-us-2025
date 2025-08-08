@@ -9,5 +9,9 @@
 --
 
 .pain-point[
-**Pain Point:** We had to wait **a while** to get this answer and we still don't know what `chads_score` actually calculates!
+**Pain Point**
 ]
+
+???
+
+We had to wait **a while** to get this answer and we still don't know what `chads_score` actually calculates!

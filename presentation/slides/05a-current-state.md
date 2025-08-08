@@ -1,25 +1,18 @@
-# Current State - EHR Database Schema
+# Current State
 
-.large-code[
+.xlarge-code[
 
 ```sql
 -- What our database looks like today
 CREATE TABLE patient_risk_patientriskassessment (
     id INTEGER PRIMARY KEY,
-    chads_score INTEGER,
     hasbled_score INTEGER,
     qrisk3_value DECIMAL(5,2),
     contraindication_flags JSON,
-    last_calc_date TIMESTAMP
+    chads_score INTEGER
 );
 ```
 
-]
-
---
-
-.pain-point[
-**Mystery Fields:** What do these cryptic names actually mean?
 ]
 
 ???
@@ -30,4 +23,12 @@ Look at these field names: chads_score, hasbled_score, qrisk3_value. If you're n
 
 A DBA looking at this table has no idea what these calculate or why they matter.
 
-This is the root of our problem - the database itself contains no business context.
+--
+
+.pain-point[
+**Mystery Fields**
+]
+
+???
+
+What do these cryptic names actually mean? This is the **root** of our problem - the database itself contains no business context.

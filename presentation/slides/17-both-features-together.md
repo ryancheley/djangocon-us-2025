@@ -17,5 +17,11 @@ class PatientRiskAssessment(models.Model):
 --
 
 .success-point[
-**Best Practice:** Use both - they serve different audiences
+**Best Practice**
 ]
+
+???
+
+The help text let's the user know what the range should be ... but we should still have field level validation, right 😉
+
+Use both - they serve different audiences

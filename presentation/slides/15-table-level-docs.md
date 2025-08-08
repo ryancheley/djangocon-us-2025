@@ -1,23 +1,32 @@
 # Complete Context - Table-Level Documentation
 
+??
+
+We may know more about the fields, but do we know as much as we can about the table that will hold these fields? Not yet, but we can. Also introduced in 4.2 was the `db_table_comment`
+
+
+--
+
 .large-code[
 
 ```python
 class PatientRiskAssessment(models.Model):
-    chads_score = models.IntegerField(
-        db_comment="CHA2DS2-VASc stroke risk (0-9)..."
-    )
 
     ...
 
     class Meta:
-        db_table_comment = ("Cardiovascular risk calculations per "
-                           "Joint Commission PC-03. Updated nightly "
-                           "via clinical_calc_job. Owner: CardioTeam")
+        db_table_comment = ("Cardiovascular risk "
+                            "calculations per "
+                            "Joint Commission PC-03. "
+                            "Owner: CardioTeam@example.com")
 ```
 
 ]
 
 .success-point[
-**Table Level Documention:** We have a what, how, and a who for this table!
+**Table Level Documention**
 ]
+
+???
+
+We have a what, and a who for this table!

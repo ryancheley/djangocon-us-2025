@@ -17,5 +17,9 @@ COMMENT ON COLUMN patient_risk_patientriskassessment.chads_score IS
 --
 
 .success-point[
-**Result:** Anyone querying the database sees the documentation
+**Result**
 ]
+
+???
+
+Anyone querying the database sees the documentation!

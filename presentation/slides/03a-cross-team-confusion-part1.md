@@ -1,5 +1,12 @@
 # The Cross-Team Confusion
 
+???
+
+This is a real scenario from our healthcare system. I want to show you what happens when a developer adds a new database field without proper documentation.
+
+Here's a typical Slack conversation that can happen in Health Care development teams
+
+
 --
 
 .slack-thread[
@@ -9,9 +16,5 @@
 ]
 
 ???
-
-This is a real scenario from our healthcare system. I want to show you what happens when a developer adds a new database field without proper documentation.
-
-Here's a typical Slack conversation that happens multiple times per week in healthcare IT teams.
 
 A web developer pushes a new field - looks innocent enough, right?

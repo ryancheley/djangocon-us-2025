@@ -1,16 +1,5 @@
 # Thank You!
 
-class: center, middle
-
-# Thank You!
-
-## Django `db_comment`: Self-Documenting Databases
-
-.small[
-**Ryan Cheley**
-DjangoCon US 2025
-]
-
 ???
 
 Thank you so much for your attention. I hope this simple Django feature can help reduce some of the database confusion in your teams.
