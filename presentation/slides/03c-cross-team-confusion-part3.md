@@ -1,3 +1,3 @@
 # The Cross-Team Confusion (continued)
 
-![Three Days Later image](images/three-hours-later.jpg)
+<img src="images/three-hours-later.jpg" alt="Three Days Later image" style="width: 80%; height: auto; display: block; margin: 0 auto;">

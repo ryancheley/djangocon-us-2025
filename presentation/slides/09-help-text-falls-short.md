@@ -8,14 +8,6 @@ Can't see `help_text`
 
 --
 
-- **Legacy system integration**
-
-???
-
-External tools need field documentation
-
---
-
 - **Regulatory audits**
 
 ???

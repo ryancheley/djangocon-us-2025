@@ -1,6 +1,13 @@
 # Ryan Cheley
 
-Associate Vice President of Business Informatics & NextGen Support Services
+* Member of Django Commons
+* I've been a Navigator in Djangonaut Space
+* One of the Maintainers of Django Packages with Jeff and Maksudal
+
+???
+
+Admin member of Django Commons
+Session 5 is coming up
 
 - **17 years** in healthcare
 

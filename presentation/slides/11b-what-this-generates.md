@@ -1,7 +1,29 @@
-# What This Generates (continue)
+# What This Generates
 
-<img src="images/chads_score_with_comment.png" width="800" alt="CHADS Score with comment">
+.large-code[
+
+```sql
+-- PostgreSQL output
+
+CREATE TABLE patient_risk_patientriskassessment (
+    chads_score INTEGER NOT NULL
+);
+
+COMMENT ON COLUMN
+  patient_risk_patientriskassessment.chads_score IS
+  'CHA2DS2-VASc stroke risk (0-9). ' ||
+  '≥2 indicates anticoagulation consideration. ' ||
+  'Per 2010 ESC Guidelines.';
+```
+
+]
+
+--
+
+.success-point[
+**Result**
+]
 
 ???
 
-If you're using pgAdmin this is what you'd see
+Anyone querying the database sees the documentation!

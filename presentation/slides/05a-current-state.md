@@ -19,9 +19,9 @@ CREATE TABLE patient_risk_patientriskassessment (
 
 This is what our database schema looks like today. Clean, functional, but completely opaque.
 
-Look at these field names: chads_score, hasbled_score, qrisk3_value. If you're not a cardiologist, these mean absolutely nothing.
+Look at these field names: hasbled_score, qrisk3_value, contraindication_flags , chads_score. If you're not a cardiologist, these mean absolutely nothing.
 
-A DBA looking at this table has no idea what these calculate or why they matter.
+A Database Administrator (DBA) looking at this table has no idea what these calculate or why they matter.
 
 --
 

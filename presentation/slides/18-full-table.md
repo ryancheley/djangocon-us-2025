@@ -1,4 +1,4 @@
-# Different Audiences, Different Needs
+# Full Documentation for **Everyone**
 
 | Stakeholder | Needs | `help_text` | `db_comment` |
 |------------|-------|-------------|--------------|

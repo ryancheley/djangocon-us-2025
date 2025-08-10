@@ -7,7 +7,7 @@ h1, h2, h3 {
 
 /* Custom styles */
 .remark-slide-content {
-    font-size: 1.5em;
+    font-size: 1.75em;
     padding: 1em 2em;
 }
 
@@ -159,4 +159,22 @@ th {
 /* Presenter notes */
 .remark-notes {
     font-size: 1.2em;
+}
+
+/* Compact table styles for find-me slide */
+.compact-table table {
+    margin: 0 auto;
+}
+
+.compact-table td,
+.compact-table th {
+    padding: 0.2em 0.5em !important;
+    line-height: 1.2;
+    font-size: 0.8em;
+    text-align: center !important;
+}
+
+.compact-table img {
+    margin: 0 auto;
+    display: block;
 }

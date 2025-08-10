@@ -36,6 +36,12 @@ class PatientRiskAssessment(models.Model):
         verbose_name_plural = "Patient Risk Assessments"
         ordering = ["-created_at"]
         unique_together = ("person", "chads_score")
+        db_table_comment = (
+            "Cardiovascular risk "
+            "calculations per "
+            "Joint Commission PC-03. "
+            "Owner: CardioTeam@example.com"
+        )
 
     def __str__(self):
         return f"Risk Assessment for {self.person.full_name} - CHADS Score: {self.chads_score}"

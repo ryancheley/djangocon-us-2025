@@ -1,10 +1,5 @@
 # Complete Context - Table-Level Documentation
 
-??
-
-We may know more about the fields, but do we know as much as we can about the table that will hold these fields? Not yet, but we can. Also introduced in 4.2 was the `db_table_comment`
-
-
 --
 
 .large-code[
@@ -22,6 +17,8 @@ class PatientRiskAssessment(models.Model):
 ```
 
 ]
+
+--
 
 .success-point[
 **Table Level Documention**
