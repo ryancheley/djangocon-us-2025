@@ -29,4 +29,10 @@ class PatientRiskAssessment(models.Model):
 
 The help text let's the user know what the range should be ... but we should still have field level validation, right 😉
 
+--
+
 Use both - they serve different audiences
+
+--
+
+But what about the table that contains the field? Is there a way to document that in the same way we've been documenting our fields?

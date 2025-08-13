@@ -22,14 +22,6 @@ class PatientRiskAssessment(models.Model):
 
 ]
 
---
-
-.pain-point[
-**Problems**
-]
-
---
-
 ???
 
 Here we see some typical Django model code.
@@ -41,3 +33,15 @@ The ETL developer looks at this and has no idea what chads_score represents. Is 
 The report developer can't build meaningful dashboards without context.
 
 And honestly - be real with me here - even the original web developer who wrote this won't remember what qrisk3_value means in six months!
+
+--
+
+.pain-point[
+**Problems**
+]
+
+--
+
+???
+
+Let's start adding db_comments!

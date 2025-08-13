@@ -20,4 +20,4 @@ Auditors examine database directly, not Django admin
 
 ???
 
-ETL developers building dimensions without field context
+ETL developers building data pipelines without field context

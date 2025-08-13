@@ -2,6 +2,8 @@
 
 ???
 
+Hopefully I've convinced you that this is the way. But how do you get starteed?
+
 You can start using this today. Here's my three-step approach:
 
 --

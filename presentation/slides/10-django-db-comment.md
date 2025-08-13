@@ -4,6 +4,10 @@
 
 `db_comment` was introduced in Django 4.2 which was released on April 3, 2023
 
+???
+
+Quick show of hands, how many of you have used this feature?
+
 --
 
 .xlarge-code[

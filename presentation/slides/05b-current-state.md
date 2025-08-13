@@ -1,6 +1,6 @@
 # Current State (continued)
 
-<img src="images/chads_score.png" width="400" alt="CHADS Score without comment">
+<img src="images/chads_score.png" width="800" alt="CHADS Score without comment">
 
 
 ???

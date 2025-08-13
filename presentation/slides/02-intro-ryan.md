@@ -1,7 +1,12 @@
 # Ryan Cheley
 
 * Member of Django Commons
+
+--
+
 * I've been a Navigator in Djangonaut Space
+
+--
 * One of the Maintainers of Django Packages with Jeff and Maksudal
 
 ???

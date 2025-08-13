@@ -5,5 +5,3 @@
 ???
 
 This is great! We've now got the abilty to document, in the database, what our fields actually mean!
-
-But what about the table that contains the field? Is there a way to document that in the same way we've been documenting our fields?

@@ -4,19 +4,19 @@
 
 .slack-thread[
 .slack-message[
-.slack-user[@etl-dev]: Need to add this to risk dimension table - what does it calculate?
+.slack-user[@etl-dev]: Need to add this to risk dimension - but I also need to document what it's used for
 ]
 ]
 
 ???
 
-But then the ETL developer sees this new field and needs to add it to the data warehouse. They have no idea what it calculates.
+But then the ETL developer sees this new field and knows that it needs to be added to the data warehouse.
 
 --
 
 .slack-thread[
 .slack-message[
-.slack-user[@report-dev]: Also need this for the new dashboard - waiting on dimension specs
+.slack-user[@report-dev]: Also need this for the new dashboard ... the sooner the data can be loaded into the Data Warehouse the better
 ]
 ]
 
