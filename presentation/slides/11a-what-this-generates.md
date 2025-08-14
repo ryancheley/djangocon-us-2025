@@ -1,6 +1,6 @@
 # What This Generates
 
-.large-code[
+.xlarge-code[
 
 ```sql
 -- PostgreSQL output

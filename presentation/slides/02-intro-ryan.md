@@ -1,6 +1,6 @@
 # Ryan Cheley
 
-* Member of Django Commons
+* Member of Django Commons Admin team with Daniel, Lacey, Storm, and Tim
 
 --
 
@@ -14,6 +14,8 @@
 Admin member of Django Commons
 Session 5 is coming up
 
+--
+
 - **17 years** in healthcare
 
 ???
@@ -22,7 +24,7 @@ Quick intro about me - I've been working in healthcare for 17 years, building sy
 
 --
 
-- **8 years** with Python
+- **9 years** with Python
 
 ???
 

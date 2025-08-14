@@ -1,16 +1,8 @@
 # Django 4.2's `db_comment`
 
---
-
 `db_comment` was introduced in Django 4.2 which was released on April 3, 2023
 
-???
-
-Quick show of hands, how many of you have used this feature?
-
---
-
-.xlarge-code[
+.large-code[
 
 ```python
 class PatientRiskAssessment(models.Model):
@@ -25,21 +17,4 @@ class PatientRiskAssessment(models.Model):
 
 ???
 
-Here's the solution: Django 4.2 introduced the db_comment parameter.
-
 This simple addition to your field definition puts documentation directly into the database schema.
-
-Notice how clean this is - just add db_comment with a description of what the field contains.
-
-The magic happens when Django generates the migration - it puts this comment directly into the database where anyone can see it.
-
-
---
-
-.success-point[
-**Solution**
-]
-
-???
-
-**Documentation lives in the database itself!**

@@ -2,7 +2,7 @@
 
 .slack-thread[
 .slack-message[
-.slack-user[web-@developer]: It's the CHA2DS2-VASc stroke risk score...
+.slack-user[@web-developer]: It's the CHA2DS2-VASc stroke risk score...
 ]
 ]
 

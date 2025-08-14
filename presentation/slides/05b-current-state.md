@@ -1,10 +1,20 @@
-# Current State (continued)
+# Current State
 
-<img src="images/chads_score.png" width="800" alt="CHADS Score without comment">
+.large-code[
 
+```sql
+-- What our database looks like today
+CREATE TABLE patient_risk_patientriskassessment (
+    id INTEGER PRIMARY KEY,
+    hasbled_score INTEGER,
+    qrisk3_value DECIMAL(5,2),
+    contraindication_flags JSON,
+    chads_score INTEGER
+);
+```
+
+]
 
 ???
 
-How many people knew that database fields **could** have comments?
-
-How many people have these comment fields **actually** filled in?
+Look at these field names: hasbled_score, qrisk3_value, contraindication_flags , chads_score. If you're not a cardiologist, these mean absolutely nothing.

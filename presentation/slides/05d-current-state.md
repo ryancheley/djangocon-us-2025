@@ -1,7 +1,5 @@
 # Current State
 
---
-
 .large-code[
 
 ```sql
@@ -17,6 +15,11 @@ CREATE TABLE patient_risk_patientriskassessment (
 
 ]
 
+
+.pain-point[
+**Mystery Fields**
+]
+
 ???
 
-This is what our database schema looks like today. Clean, functional, but completely opaque.
+What do these cryptic names actually mean? This is the **root** of our problem - the database itself contains no business context.

@@ -1,7 +1,5 @@
 # Current State
 
---
-
 .large-code[
 
 ```sql
@@ -19,4 +17,4 @@ CREATE TABLE patient_risk_patientriskassessment (
 
 ???
 
-This is what our database schema looks like today. Clean, functional, but completely opaque.
+A Database Administrator (DBA) looking at this table has no idea what these calculate or why they matter.

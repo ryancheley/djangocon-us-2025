@@ -1,12 +1,11 @@
 # Table-Level Documentation
 
-???
-
-Yes! By using `db_table_comment`
-
---
 
 `db_table_comment`
+
+???
+
+We can use `db_table_comment` for this very purpose
 
 --
 

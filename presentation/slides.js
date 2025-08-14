@@ -63,6 +63,7 @@ async function loadSlides() {
             highlightLanguage: 'python',
             highlightLines: true,
             countIncrementalSlides: false,
+            slideNumberFormat: '', // This removes the slide counter
             navigation: {
                 scroll: false,
                 touch: true,
