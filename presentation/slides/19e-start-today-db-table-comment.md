@@ -1,4 +1,4 @@
-# Start Today - 3 Steps (E)
+# Start Today - 3 Steps
 
 ## `db_table_comment`
 
