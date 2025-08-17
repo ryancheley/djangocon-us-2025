@@ -2,8 +2,6 @@
 
 --
 
-## Self-Documenting Databases
-
 .small[DjangoCon US 2025]
 
 ???

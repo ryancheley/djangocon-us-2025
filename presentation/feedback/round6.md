@@ -9,20 +9,20 @@ The Real Cost slide has duplicate talking points
 Current State slide
 what is the relationship between cardiology and healthcare in your notes / statement
 
-on the help text limitation slide with the image, make the help text larger in the UI
+[ ] on the help text limitation slide with the image, make the help text larger in the UI
 
-Stakeholders slide should just have 1 example of db access in the table
+[ ] Stakeholders slide should just have 1 example of db access in the table
 
-is `db_comment` an attribute of a model class? Is that the right term
+is `db_comment` an attribute of a model class? Is that the right term .. No it should be `field option`
 
-the slide that has an example of db_comment at 11:15ish to the slide with 'What this Generates' has a bad transition from a presentation perspective
+[ ] the slide that has an example of db_comment at 11:15ish to the slide with 'What this Generates' has a bad transition from a presentation perspective
 
 Before - The Mystery Fields
-when talking about the ETL developer and the chads_score it isn't correct to say a percentage because it's an integer ... may need to qualify that a bit
+[ ] when talking about the ETL developer and the chads_score it isn't correct to say a percentage because it's an integer ... may need to qualify that a bit
 
-Both Fields working together slide ... maybe go to a slide where the data entry occurs
+[ ] Both Fields working together slide ... maybe go to a slide where the data entry occurs
 
-Table Level Documentation talking slide is a mess
+[ ] Table Level Documentation talking slide is a mess
 
 Start Today - 3 steps db_comment
 

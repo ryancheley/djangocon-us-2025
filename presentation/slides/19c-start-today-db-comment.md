@@ -13,4 +13,4 @@
 
 ???
 
-Third, make it part of your process. Update your code review checklist to require db_comment for new fields. Make documentation a habit, not an afterthought.
+Third, make it part of your process. Update your code review checklist to require db_comment for new fields. Make documentation a habit, not an afterthought. Most (maybe all) of us are already really good about making use of Doc Strings. This is just an extension of that practice!
