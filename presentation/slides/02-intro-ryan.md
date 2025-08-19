@@ -16,11 +16,11 @@ Session 5 is coming up
 
 --
 
-- **17 years** in healthcare
+- **7 years** with Django
 
 ???
 
-Quick intro about me - I've been working in healthcare for 17 years, building systems that help clinicians make better decisions for patients.
+ and Django for 7 years
 
 --
 
@@ -28,16 +28,18 @@ Quick intro about me - I've been working in healthcare for 17 years, building sy
 
 ???
 
-I've been using Python for 8 years
+I've been using Python for 9 years
+
 
 
 --
 
-- **7 years** with Django
+- **17 years** in healthcare
 
 ???
 
- and Django for 7 years
+Quick intro about me - I've been working in healthcare for 17 years, building systems that help clinicians make better decisions for patients.
+
 
 --
 

@@ -11,7 +11,6 @@ class PatientRiskAssessment(models.Model):
                 "anticoagulation consideration. "
                 "Per 2010 ESC Guidelines."
     )
-
     ...
 
 ```
