@@ -2,4 +2,7 @@
     just --list
 
 @present:
-    python3 -m http.server 8002 & open http://localhost:8002
+    nohup python3 -m http.server 8002 > /dev/null 2>&1 & open http://localhost:8002 &
+
+@stop:
+    lsof -ti:8002 | xargs kill
