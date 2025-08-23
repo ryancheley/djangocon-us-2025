@@ -1,7 +1,5 @@
 # Django as a Database Documentation Tool: The Hidden Power of Model Comments
 
---
-
 .small[DjangoCon US 2025]
 
 ???

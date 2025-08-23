@@ -13,8 +13,3 @@ class PatientRiskAssessment(models.Model):
 ```
 
 ]
-
-
-???
-
-ETL and Report developers have no idea what these fields represent! And if we're being honest, even the web developer won't know / remember in a few days / weeks!

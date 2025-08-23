@@ -17,4 +17,4 @@ CREATE TABLE patient_risk_patientriskassessment (
 
 ???
 
-A Database Administrator (DBA) looking at this table has no idea what these calculate or why they matter.
+A Database Administrator (DBA) looking at this table likely has no idea what these are or why they matter.

@@ -2,9 +2,7 @@
 
 ???
 
-This is a real scenario from our healthcare system. I want to show you what happens when a developer adds a new database field without proper documentation.
-
-Here's a typical Slack conversation that can happen in Health Care development teams
+This is a dramatized scenario from my organization via a "typical" Slack conversation
 
 
 --
