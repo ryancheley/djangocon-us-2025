@@ -4,7 +4,7 @@
 
 ???
 
-Can't see `help_text`
+- Can't see `help_text`
 
 --
 
@@ -12,7 +12,8 @@ Can't see `help_text`
 
 ???
 
-Auditors examine database directly, not Django admin
+- Auditors examine database directly
+- not Django admin or FE
 
 --
 
@@ -20,4 +21,6 @@ Auditors examine database directly, not Django admin
 
 ???
 
-ETL developers building data pipelines without field context
+- ETL developers
+- building data pipelines
+- without field context

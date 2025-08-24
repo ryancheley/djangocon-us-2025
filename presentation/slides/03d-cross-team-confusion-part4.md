@@ -14,4 +14,5 @@
 
 ???
 
-We had to wait **a while** to get this answer and we still don't know what `chads_score` actually calculates!
+- wait **a while**
+- still don't know

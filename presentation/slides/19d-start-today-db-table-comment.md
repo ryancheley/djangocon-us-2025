@@ -4,7 +4,7 @@
 
 ???
 
-Similar to `db_comment`
+- Similar to `db_comment`
 
 --
 
@@ -12,4 +12,9 @@ Similar to `db_comment`
 
 ???
 
-First, audit your existing models. Look for tables with cryptic names or confusion about who the "owners" are. When the table `swptabtprnib` it probably made sense to call it that ... but what does that even mean? Fun fact `swptabtprnib` this was an actual acronym I saw in an email to the technical team I'm on.
+- audit
+- cryptic names or complex business logic
+- identify owners
+- top 10 most confusing fields
+- example `swptabtprnib`
+- `swptabtprnib` an actual acronym in an email

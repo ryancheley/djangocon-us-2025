@@ -17,4 +17,5 @@
 
 ???
 
-I believe in the importance of documentation and the great benefit it can have on intrateam communication
+- importance of documentation
+- great benefit for communication

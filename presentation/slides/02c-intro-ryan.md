@@ -19,7 +19,3 @@
 --
 
 - **17 years** in healthcare
-
-???
-
-I've been working in healthcare for 17 years, building systems that help clinicians make better decisions for patients.

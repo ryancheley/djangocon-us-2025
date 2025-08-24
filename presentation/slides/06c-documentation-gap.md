@@ -9,4 +9,5 @@
 
 ???
 
-Wiki pages and Confluence docs get stale quickly. Someone updates the code but forgets to update the documentation.
+- Someone updates the code
+- but forgets to update the documentation

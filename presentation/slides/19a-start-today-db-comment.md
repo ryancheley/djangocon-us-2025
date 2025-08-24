@@ -8,4 +8,6 @@
 
 ???
 
-First, audit your existing models. Look for fields with cryptic names or complex business logic. Start with your top 10 most confusing fields.
+- audit
+- cryptic names or complex business logic
+- top 10 most confusing fields

@@ -1,18 +1,16 @@
-# Power of `db_comment`
+# Power of `db_comment` and `db_table_comment`
 
 ???
 
-I hope I've been able to convince you of the power and usefulness of db_comment
+- convince you
+- power and usefulness of `db_comment`
+- and `db_table_comment`
 
-And that you can ...
+- And that you can ...
 
 --
 
 Make Documentation a **Habit**
-
-???
-
-Not just ...
 
 --
 

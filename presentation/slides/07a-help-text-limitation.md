@@ -21,4 +21,4 @@ class PatientRiskAssessment(models.Model):
 
 ???
 
-You might think help_text solves this problem. It doesn't.
+- `help_text` doesn't solves this problem

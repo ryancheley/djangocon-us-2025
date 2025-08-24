@@ -21,4 +21,4 @@ class PatientRiskAssessment(models.Model):
 
 ???
 
-**Documentation lives in the database itself!**
+- **Documentation lives in the database itself!**

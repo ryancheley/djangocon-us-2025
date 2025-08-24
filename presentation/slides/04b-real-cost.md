@@ -8,4 +8,5 @@
 
 ???
 
-Let me be clear about the real business impact here. This isn't just a minor inconvenience.
+- real impact
+- NOT just a minor inconvenience

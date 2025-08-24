@@ -16,4 +16,4 @@ class PatientRiskAssessment(models.Model):
 
 ???
 
-The report developer can't build meaningful dashboards without context.
+- can't build meaningful dashboards without context

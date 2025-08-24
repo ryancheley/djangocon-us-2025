@@ -2,7 +2,9 @@
 
 ???
 
-It's at this point we have to acknowledge that we have different users with different needs
+- at this point we have to acknowledge
+- we have different users
+- different needs
 
 --
 

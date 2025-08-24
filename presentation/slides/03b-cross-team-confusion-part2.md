@@ -10,7 +10,7 @@
 
 ???
 
-But then the ETL developer sees this new field and knows that it needs to be added to the data warehouse.
+- ETL Developer needs
 
 --
 
@@ -22,6 +22,6 @@ But then the ETL developer sees this new field and knows that it needs to be add
 
 ???
 
-And the report developer needs it for a new dashboard but they're blocked until it's added to the data warehouse.
-
-This is where the pain starts - multiple teams are now blocked waiting for clarification.
+- Report Developer Needs
+- Pain start
+- blocked for clarification

@@ -18,4 +18,7 @@ CREATE TABLE patient_risk_patientriskassessment (
 ]
 
 ???
-OK, let's jump to what our current Database view might look like. It's Clean, functional, but completely opaque.
+
+- Clean
+- functional
+- but completely opaque.

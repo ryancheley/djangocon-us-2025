@@ -5,9 +5,9 @@
 ```sql
 -- PostgreSQL output
 
-CREATE TABLE patient_risk_patientriskassessment (
-    chads_score INTEGER NOT NULL
-);
+
+ALTER TABLE patient_risk_patientriskassessment
+    ADD COLUMN chads_score INTEGER NOT NULL;
 ```
 
 ]

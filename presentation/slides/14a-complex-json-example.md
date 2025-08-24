@@ -20,4 +20,6 @@ contraindication_flags = models.JSONField(
 
 ???
 
-The ETL developer knows the JSON structure without digging through Django code. They can turn these keys into unique columns to make it easier to report on them by the Report Developers
+- The ETL developer knows the JSON structure
+- They can turn these keys into unique columns
+- ease report / dashboard development

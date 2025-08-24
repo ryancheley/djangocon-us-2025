@@ -22,8 +22,6 @@ class Meta:
 
 ???
 
-We have a what, and a who for this table!
-
-What is this table about?
-
-Who is the point of contact?
+- We have a what, and a who for this table!
+- What is this table about?
+- Who is the point of contact?

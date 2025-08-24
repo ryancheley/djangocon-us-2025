@@ -20,4 +20,4 @@ COMMENT ON COLUMN
 
 ???
 
-Anyone querying the database sees the documentation!
+- Anyone querying the database sees the documentation!

@@ -16,4 +16,7 @@ class PatientRiskAssessment(models.Model):
 
 ???
 
-And honestly - be real with me here - even the original web developer who wrote this won't remember what qrisk3_value means in six months!
+- be real with me here
+- even the original web developer
+- who wrote this
+- won't remember what qrisk3_value means in six months

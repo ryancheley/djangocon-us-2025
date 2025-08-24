@@ -18,4 +18,6 @@
 
 ???
 
-Context for ETL dimension creation and report development
+- Context
+- for ETL
+- report development

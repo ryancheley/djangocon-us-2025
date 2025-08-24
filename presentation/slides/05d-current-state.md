@@ -22,4 +22,6 @@ CREATE TABLE patient_risk_patientriskassessment (
 
 ???
 
-What do these cryptic names actually mean? This is the **root** of our problem - the database itself contains no business context.
+- What do these names mean?
+- **root** of our problem
+- database itself contains no business context

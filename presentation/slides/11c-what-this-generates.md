@@ -4,4 +4,4 @@
 
 ???
 
-If you're using pgAdmin this is what you'd see
+- If you're using pgAdmin this is what you'd see

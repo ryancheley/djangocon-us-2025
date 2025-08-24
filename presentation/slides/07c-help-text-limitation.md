@@ -19,4 +19,8 @@ class PatientRiskAssessment(models.Model):
 
 ???
 
-The problem is it's only visible in forms, either in the Admin or the Front End. If you're a DBA using pgAdmin, or a data analyst using Tableau, or an ETL developer building data pipelines - you'll never see this help text.
+- only visible in forms
+- DBA using pgAdmin
+- a data analyst using Vix Tool
+- an ETL developer building data pipelines
+- you'll never see this help text.

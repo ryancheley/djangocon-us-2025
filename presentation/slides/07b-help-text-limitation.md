@@ -19,4 +19,5 @@ class PatientRiskAssessment(models.Model):
 
 ???
 
-help_text is designed for end users filling out forms. It's UI-focused guidance.
+- help_text is for end users
+- It's UI-focused guidance

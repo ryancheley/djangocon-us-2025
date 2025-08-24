@@ -23,6 +23,5 @@ class PatientRiskAssessment(models.Model):
 
 ???
 
-The help text let's the user know what the range should be ... but we should still have field level validation, right 😉
-
-Use both - they serve different audiences
+- Use both
+- serve the intended audience

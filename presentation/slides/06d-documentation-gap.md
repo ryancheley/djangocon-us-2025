@@ -9,4 +9,6 @@
 
 ???
 
-Undocumented expertise - the "just ask Sarah, she knows" approach - doesn't scale and creates single points of failure.
+- the "just ask Sarah, she knows" approach
+- doesn't scale
+- single points of failure

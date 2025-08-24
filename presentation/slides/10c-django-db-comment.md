@@ -17,4 +17,4 @@ class PatientRiskAssessment(models.Model):
 
 ???
 
-This simple addition to your field definition puts documentation directly into the database schema.
+- puts documentation directly into the database schema

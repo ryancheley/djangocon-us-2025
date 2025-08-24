@@ -20,4 +20,4 @@ class PatientRiskAssessment(models.Model):
 
 ???
 
-Let's start adding db_comments!
+- Let's start adding db_comments!

@@ -16,4 +16,7 @@ class PatientRiskAssessment(models.Model):
 
 ???
 
-Here we see some typical Django model code. Clean, functional, but tells us nothing about the business logic.
+- typical Django model
+- Clean
+- functional
+- but tells us nothing

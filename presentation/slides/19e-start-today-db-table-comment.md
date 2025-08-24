@@ -10,4 +10,6 @@
 
 ???
 
-Second, add db_table_comment to these models. Include the business context and owner details
+- add db_table_comment to these tables
+- business context
+- owner details

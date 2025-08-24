@@ -9,4 +9,7 @@
 
 ???
 
-Second, add db_comment to these fields. Include the business context, the calculation method, and any regulatory requirements. This is especially important in healthcare where compliance matters.
+- add db_comment to these fields
+- business context
+- calculation method
+- any regulatory requirements

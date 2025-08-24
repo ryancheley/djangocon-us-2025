@@ -16,4 +16,5 @@ class PatientRiskAssessment(models.Model):
 
 ???
 
-Let's do a before and after comparison showing how the `db_comment` can help!
+- do before / after
+- show how `db_comment` can help

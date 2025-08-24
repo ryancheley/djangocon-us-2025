@@ -16,4 +16,7 @@ class PatientRiskAssessment(models.Model):
 
 ???
 
-The ETL developer looks at this and has no idea what chads_score represents. Is it a count? A percentage? A risk level?
+- ETL developer no idea what chads_score represents
+- count?
+- percentage?
+- risk level?

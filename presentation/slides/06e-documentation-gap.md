@@ -11,4 +11,4 @@
 
 ???
 
-And in healthcare, we have regulatory requirements. Auditors need to see field-level documentation to understand what data we're storing about patients.
+- healthcare regulatory requirements

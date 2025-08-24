@@ -11,4 +11,7 @@
 
 ???
 
-Again, make this part of your process. Update your code review checklist to require db_table_comment for new fields.
+- Again
+- process
+- update
+- documentation is a habit, not an afterthought

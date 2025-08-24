@@ -6,7 +6,7 @@
 
 ???
 
-Quick show of hands, how many of you have used this feature?
+- Quick show of hands, how many of you have used this feature?
 
 --
 

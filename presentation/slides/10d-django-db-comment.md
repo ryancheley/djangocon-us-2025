@@ -17,4 +17,5 @@ class PatientRiskAssessment(models.Model):
 
 ???
 
-Notice how clean this is - just add db_comment with a description of what the field contains.
+- Notice how clean this is
+- add db_comment

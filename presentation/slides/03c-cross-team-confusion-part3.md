@@ -4,4 +4,6 @@
 
 ???
 
-The Web Developer needs to consult their notes, or work with the Business Analyst or a Subject Matter Expert to get an answer for the ETL developer
+- consult their notes
+- work with the Business Analyst
+- Subject Matter Expert

@@ -17,4 +17,6 @@ class PatientRiskAssessment(models.Model):
 
 ???
 
-The magic happens when Django generates the migration - it puts this comment directly into the database where anyone can see it.
+- The magic happens with the migration
+- it puts this comment directly into the database
+- where anyone can see it

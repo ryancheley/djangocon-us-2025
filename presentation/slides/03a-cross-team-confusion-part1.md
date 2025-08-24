@@ -2,7 +2,8 @@
 
 ???
 
-This is a dramatized scenario from my organization via a "typical" Slack conversation
+- dramatized scenario
+- "typical" Slack conversation
 
 
 --
@@ -15,4 +16,4 @@ This is a dramatized scenario from my organization via a "typical" Slack convers
 
 ???
 
-A web developer pushes a new field - looks innocent enough, right?
+- looks innocent
