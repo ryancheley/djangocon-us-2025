@@ -19,5 +19,5 @@ class PatientRiskAssessment(models.Model):
 
 ???
 
-- right tool
+- good tool
 - wrong audience.
