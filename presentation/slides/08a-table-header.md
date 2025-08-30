@@ -8,6 +8,6 @@
 
 --
 
-| Stakeholder | Needs | `help_text` | `db_comment` |
+| Stakeholder | Needs | `help_text` | Database Comments |
 |------------|-------|-------------|--------------|
 | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
