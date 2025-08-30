@@ -16,7 +16,7 @@ slide 4
 
 slide 5
 
-- remove EHR ... it's not important
+- remove HER ... it's not important
 - call out that we're now introducing other fields in addition to CHAD Score
 
 slide 6

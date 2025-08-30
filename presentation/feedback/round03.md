@@ -10,7 +10,7 @@ Add a story about how the Complex JSON fields can be used by the ETL developer t
 
 On `The Real Cost` slide put the regulatory issues onto it's own slide
 
-Change the `Current State - EHR Database Schema` title to `Current State`
+Change the `Current State - HER Database Schema` title to `Current State`
 
 Change the order of the fields to have `chads_score` at end since it's the one we just added
 
