@@ -6,7 +6,9 @@
 
 ???
 
+- Not supported in SQLite
 - Quick show of hands, how many of you have used this feature?
+
 
 --
 

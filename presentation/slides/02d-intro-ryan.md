@@ -11,6 +11,9 @@
 
 * **9 years** with Python
 
+- **17 years** in healthcare
+
+
 .success-point[
 **Why this talk?**
 ]

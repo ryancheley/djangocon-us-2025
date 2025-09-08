@@ -1,4 +1,4 @@
-# Complex Example - JSON Fields
+# JSON Fields
 
 .xlarge-code[
 ```python

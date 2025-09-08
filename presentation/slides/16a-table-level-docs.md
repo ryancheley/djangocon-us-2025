@@ -2,7 +2,7 @@
 
 --
 
-.code[
+.large-code[
 
 ```python
 class Meta:
@@ -17,7 +17,7 @@ class Meta:
 --
 
 .success-point[
-**Table Level Documention**
+**Table Level Documentation**
 ]
 
 ???

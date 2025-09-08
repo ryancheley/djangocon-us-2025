@@ -1,4 +1,4 @@
-# Before - The Mystery Fields
+# Before
 
 .xlarge-code[
 

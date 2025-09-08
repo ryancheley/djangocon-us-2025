@@ -6,6 +6,8 @@
 ???
 
 - use `db_table_comment` for this
+- Not supported in SQLite
+
 
 --
 

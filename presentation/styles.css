@@ -45,8 +45,8 @@ h1, h2, h3 {
 .pain-point {
     background: #ffebee;
     border-left: 5px solid #f44336;
-    padding: 0.5em;
-    margin: 1em 0;
+    padding: 0.25em;
+    /* margin: 1em 0; */
     border-radius: 0.3em;
 }
 
@@ -54,8 +54,7 @@ h1, h2, h3 {
 .success-point {
     background: #e8f5e9;
     border-left: 5px solid #4caf50;
-    padding: 0.5em;
-    margin: 1em 0;
+    padding: 0.025em 0.25em;
     border-radius: 0.3em;
 }
 
@@ -63,7 +62,7 @@ h1, h2, h3 {
 .slack-thread {
     background: #f5f5f5;
     border-radius: 0.5em;
-    padding: 0.5em;
+    padding: 0.15em;
     margin: 0.25em;
     text-align: left;
     font-family: 'Ubuntu Mono', monospace;

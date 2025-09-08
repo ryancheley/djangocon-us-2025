@@ -1,4 +1,4 @@
-# After - Self-Documenting Models
+# After
 
 .xlarge-code[
 ```python

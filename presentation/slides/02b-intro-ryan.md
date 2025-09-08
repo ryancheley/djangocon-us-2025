@@ -6,4 +6,5 @@
 
 ???
 
-Session 5 is coming up
+Session 5 starts in about 3 weeks;
+Lilian's talk yesterday
