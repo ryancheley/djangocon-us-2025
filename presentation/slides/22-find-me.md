@@ -13,3 +13,9 @@
 | 📝 **Blog** | https://www.ryancheley.com | <img src="../images/website-qr-code.png" width="90"> |
 | 💻 **GitHub** | https://github.com/ryancheley | <img src="../images/github-qr-code.png" width="90"> |
 ]
+
+
+???
+
+Also, these QR Codes were generated with the Python library qrcode
+Shoutout to Mariatta who spoke about this earlier
