@@ -1,4 +1,4 @@
-# Complete Context - Table-Level Documentation
+# Table-Level Documentation
 
 --
 

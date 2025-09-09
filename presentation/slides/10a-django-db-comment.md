@@ -2,7 +2,7 @@
 
 --
 
-`db_comment` was introduced in Django 4.2 which was released on April 3, 2023
+* Released on April 3, 2023
 
 ???
 

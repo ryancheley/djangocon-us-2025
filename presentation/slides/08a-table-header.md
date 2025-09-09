@@ -3,7 +3,7 @@
 ???
 
 - at this point we have to acknowledge
-- we have different users
+- we have different stakeholders
 - different needs
 
 --

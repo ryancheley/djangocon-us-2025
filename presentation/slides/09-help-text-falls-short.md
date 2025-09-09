@@ -1,9 +1,13 @@
 # Where `help_text` Falls Short
 
-- **Data team using SSRS/Power BI/Tableau**
+--
+
+- **Data team creating visualizations**
 
 ???
 
+- Plotly, Streamlit, Matplotlib and Seaborn
+- Power BI, SSRS, Tableau
 - Can't see `help_text`
 
 --

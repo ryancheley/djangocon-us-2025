@@ -7,7 +7,7 @@
 
 2. **Document:** Add `db_table_comment`
 
-3. **Standardize:** Update code review templates
+3. **Standardize:** Update code review process
 
 ???
 

@@ -9,7 +9,7 @@
 2. **Document:** Add `db_comment` with business context + compliance notes
 
 
-3. **Standardize:** Update code review templates
+3. **Standardize:** Update code review process
 
 ???
 

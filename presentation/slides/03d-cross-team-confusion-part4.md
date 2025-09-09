@@ -1,4 +1,4 @@
-# The Cross-Team Confusion (continued)
+# The Cross-Team Confusion
 
 .slack-thread[
 .slack-message[

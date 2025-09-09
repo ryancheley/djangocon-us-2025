@@ -3,11 +3,12 @@
 .xlarge-code[
 
 ```python
-# help_text - UI focused
 class PatientRiskAssessment(models.Model):
     chads_score = models.IntegerField(
-        help_text="Enter score 0-9 based"
-        "on patient risk factors"
+        help_text="CHAD2SC-VASc score risk"
+        "for stroke risk assessment (0-9)."
+        "Higher score indiccates higher"
+        "risk score."
     )
 ```
 
